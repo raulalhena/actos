@@ -12,6 +12,7 @@ function TextInput(props: TextInputProps) {
             <label htmlFor={id}>{label}</label>
             <input type="text" id={id} placeholder={placeholder} />
         </div>
+        
     );
 }
 
