@@ -15,9 +15,9 @@
         "startTime": "17:30",
         "endTime": "19:00",
         "timeZone": ["Madrid +2:00 GMT", "GMT 00:00"],
-        "showStartTime": 1,
-        "showEndTime": 1,
-        "confirmed": 1,
+        "showStartTime": 1, //mostrar=1 / ocultar=0
+        "showEndTime": 1, //mostrar=1 / ocultar=0
+        "confirmed": 1, //pendiente=0 / confirmado=1
         "type": ["Proyecto", "Formacion", "Taller", "Charla", "Otros"],
         "mode": ["Presencial", "Online"],
         "image": "URL a la imagen",
@@ -31,8 +31,9 @@
         "contact": "eventmanager@actos.com",
         "language": ["Castellano", "Catalán", "Inglés"],
         "web": "URL a la web",
-        "visibility": 0,
-        "status": 0
+        "visibility": 0, //draft=0 / public=1
+        "status": 0 //activo=1 / cancelado=0 
     }
 ]
 ```
+
