@@ -1,4 +1,27 @@
-# ACTOS
+# 📅 Actos Project
+
+## Event Registration and Attendance Application
+
+This application has been developed to address the needs of <a href='https://www.nouscims.com/' target='_blank'>🔗 **Nous Cims Foundation** </a> in managing registration and attendance for a variety of events organized or promoted by the foundation.
+
+We hope this application will assist in hosting successful events and delivering meaningful experiences.
+
+## 🗝️ Key Features
+- Easy registration for attendees.
+- Comprehensive event management, including various types of events.
+- Attendance tracking.
+- Collection of feedback and opinions on events.
+
+## 🖼️ Mockup (Figma):
+
+## 💻 Full-stack Developers:
+Did you like our application? We'd love to hear your feedback. Please don't hesitate to get in touch with us to share your comments and suggestions. We're here to assist!
+
+- Teresa Madridejos (Product Owner): teresamadridejosm@gmail.com
+- Renata Yumi Namie (Scrum Master): rn.yumi@gmail.com
+- Raúl Alhena: raul.alhena@gmail.com
+- Diego Cruz: dacmdeco779@gmail.com
+- Andreu Baltazar: andreubltzr11@gmail.com
 
 ### Entidad / Modelo / Modulo
 
