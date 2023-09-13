@@ -1,12 +1,14 @@
 import { selectProps } from '@/app/interfaces/selectProps';
 
 function Select(props: selectProps) {
-    const { label, options, id } = props;
+    const { label, options, id, value, onChange } = props;
 
     return (
         <div>
-            <label htmlFor={id}>{label}</label>
-            <select id={id}>
+            <label htmlFor={id}> 
+                {label} 
+            </label>
+            <select id={id} value={value} onChange={onChange}>
                 {options.map((option, index) => (
                     <option key={index} value={option}>
                         {option}
