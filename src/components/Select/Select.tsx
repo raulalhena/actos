@@ -1,12 +1,8 @@
-interface SelectProps {
-    label: string;
-    options: string[];
-    id: string;
-  }
-  
-function Select(props: SelectProps) {
+import { selectProps } from '@/app/interfaces/selectProps';
+
+function Select(props: selectProps) {
     const { label, options, id } = props;
-  
+
     return (
         <div>
             <label htmlFor={id}>{label}</label>
@@ -20,5 +16,5 @@ function Select(props: SelectProps) {
         </div>
     );
 }
-  
+
 export default Select;
