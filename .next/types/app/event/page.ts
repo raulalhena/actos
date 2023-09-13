@@ -1,4 +1,4 @@
-// File: D:\Yumi\factoria-f5\projects\FinalProject-actos\actos\src\app\event\page.tsx
+// File: C:\Users\deco2\Desktop\factoria-f5\workspace\FINAL-PROYECT\actos\actos\src\app\event\page.tsx
 import * as entry from '../../../../src/app/event/page.js'
 import type { ResolvingMetadata } from 'next/dist/lib/metadata/types/metadata-interface.js'
 

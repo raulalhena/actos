@@ -1,33 +1,29 @@
-import { tagsInputProps } from '@/app/interfaces/tagsInputProps';
-import { useState } from 'react';
-import { TagsInput } from 'react-tag-input-component'; 
+// import { tagsInputProps } from '@/app/interfaces/tagsInputProps';
+// import { useState } from 'react';
+// import { TagsInput } from 'react-tag-input-component';
 
-const TagInput = (props: tagsInputProps) => {
-    const { label, placeholder, id, maxLength } = props;
+// const TagInput = (props: tagsInputProps) => {
+//     const { label,  id, maxLength, onChange } = props;
 
-    const [ tags, setTags ] = useState([]);
+//     const [ tags, setTags ] = useState<string[]>([]);
 
-    return (
-            
-        <div>
-            <label 
-                htmlFor={id}>{label}
-            </label>
+//     const handleTagsChange = (tags: string[]) => {
+//         setTags(tags);
+//         if (onChange) {
+//             onChange(tags);
+//         }
+//     };
+//     return (
+//         <>
+//             <label htmlFor={id}>{label}</label>
+//             <TagsInput
+//                 id={id} 
+//                 maxLength={maxLength}
+//                 value={tags}
+//                 onChange={handleTagsChange}
+//             />
+//         </>
+//     );
+// };
 
-            <pre>{JSON.stringify(tags)}</pre>
-            <TagsInput
-                type="text" 
-                id={id} 
-                placeholder={placeholder}
-                maxLength={maxLength}
-                value={tags}
-                onChange={setTags}
-                
-            />
-            <em>Enter tags</em>
-        </div>
-        
-    );
-};
-
-export default TagInput;
+// export default TagInput;

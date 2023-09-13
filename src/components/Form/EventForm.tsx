@@ -5,21 +5,19 @@ import Select from '@/components/Select/Select';
 import TextInput from '@/components/TextInput/TextInput';
 import categories from '@/data/category.json';
 import ButtonSubmit from '../Button/ButtonSubmit';
+import { TagsInput } from 'react-tag-input-component';
+import { EventFormProps } from '@/app/interfaces/eventFormProps';
 
+// Form
 const EventForm = () => {
-    const [ formData, setFormData ] = useState({
+    const [ formData, setFormData ] = useState<EventFormProps>({
         event: '',
         categoryEvent: '', 
-        tag: '',
+        tag: [],
         direction: '',
         webLink: '',
     });
-
-    const handlesubmit = (event:React.FormEvent) => {
-        event.preventDefault();
-        console.log(formData);
-    };
-
+    // Input
     const handleInputChange = (event:React.ChangeEvent<HTMLInputElement>) => {
         const { id, value } = event.target;
         setFormData({
@@ -27,13 +25,26 @@ const EventForm = () => {
             [id]: value,
         });
     };
-
+    // Select
     const handleSelectChange = (event:React.ChangeEvent<HTMLSelectElement>) => {
         const { id, value } = event.target;
         setFormData({
             ...formData,
             [id]: value,
         });
+    };
+    // Tags
+    const handleTagsChange = (newTags: []) => {
+        setFormData({
+            ...formData,
+            tag: newTags,
+        });
+    };
+    // Submit Button
+    const handlesubmit = (event:React.FormEvent) => {
+        event.preventDefault();
+        console.log(formData);
+
     };
 
     return (
@@ -56,14 +67,11 @@ const EventForm = () => {
                     value={formData.categoryEvent}
                     onChange={handleSelectChange}  
                 />
-                <TextInput 
-                    id="tag"
-                    label="Etiquetas"
-                    placeholder="Tags"
-                    minLength={3}
-                    maxLength={10}
+                <TagsInput
                     value={formData.tag}
-                    onChange={handleInputChange}
+                    onChange={handleTagsChange}
+                    name="tags"
+                    placeHolder="tags"
                 />
                 <TextInput 
                     id="direction"
@@ -83,7 +91,6 @@ const EventForm = () => {
                     value={formData.webLink}
                     onChange={handleInputChange}
                 />
-
                 <ButtonSubmit
                     label="Enviar"
                 />

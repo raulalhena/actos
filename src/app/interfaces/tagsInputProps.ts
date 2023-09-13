@@ -1,8 +1,9 @@
-export interface tagsInputProps {
+import { TagsInputProps } from 'react-tag-input-component';
+
+export interface tagsInputProps extends TagsInputProps {
     label: string;
-    placeholder: string;
+
     id: string;
     maxLength: number;
-    value: string;
-    onChange: (event: React.ChangeEvent<HTMLInputElement>) => void;
+   
 }
