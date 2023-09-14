@@ -1,0 +1,9 @@
+.title {
+    display: flex;
+    gap: 1rem;
+}
+
+.dash {
+    color: #E15A40;
+}
+

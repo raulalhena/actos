@@ -5,8 +5,9 @@ import Select from '@/components/Select/Select';
 import TextInput from '@/components/TextInput/TextInput';
 import categories from '@/data/category.json';
 import ButtonSubmit from '../Button/ButtonSubmit';
-import { TagsInput } from 'react-tag-input-component';
+// import { TagsInput } from 'react-tag-input-component';
 import { EventFormProps } from '@/app/interfaces/eventFormProps';
+import styles from './EventForm.module.css';
 
 // Form
 const EventForm = () => {
@@ -60,19 +61,21 @@ const EventForm = () => {
                     onChange={handleInputChange}
 
                 />
+                <hr className={styles.hrSmall}></hr>
                 <Select
                     id="categoryEvent"
-                    label="category" 
+                    label="Categoría" 
                     options={categories}
                     value={formData.categoryEvent}
                     onChange={handleSelectChange}  
                 />
-                <TagsInput
+                <hr className={styles.hrSmall}></hr>
+                {/* <TagsInput
                     value={formData.tag}
                     onChange={handleTagsChange}
                     name="tags"
                     placeHolder="tags"
-                />
+                /> */}
                 <TextInput 
                     id="direction"
                     label="Añade una dirección"
@@ -82,6 +85,7 @@ const EventForm = () => {
                     value={formData.direction}
                     onChange={handleInputChange}
                 />
+                <hr className={styles.hrSmall}></hr>
                 <TextInput 
                     id="webLink"
                     label="Añade un enlace"
@@ -91,6 +95,7 @@ const EventForm = () => {
                     value={formData.webLink}
                     onChange={handleInputChange}
                 />
+                <hr className={styles.hrSmall}></hr>
                 <ButtonSubmit
                     label="Enviar"
                 />
