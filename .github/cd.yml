@@ -27,17 +27,17 @@ jobs:
         key: ${{ secrets.PRIVATE_KEY }}
         port: 22
         script: |
-          cd /home/${{ secrets.USERNAME }}/apps/portfolio/
+          cd /home/${{ secrets.USERNAME }}/apps/actos/
           git pull origin main
           git status
           cd frontend
-          nvm use v16.20.1
+          nvm use v18.16.1
           npm install
-          lsof -t -i :3000 -S | xargs kill -9
+          lsof -t -i :5000 -S | xargs kill -9
           npm run build
-          cp -r ./dist/* /var/www/raulalhena.com/html/
+          cp -r ./dist/* /var/www/actos/html/
           cd ../backend
           npm install
           npm run build
-          pm2 delete PortfolioBack
-          pm2 --name PortfolioBack start npm -- start
+          pm2 delete Actos
+          pm2 --name Actos start npm -- start
