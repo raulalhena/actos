@@ -1,4 +1,4 @@
-export interface eventFormData {
+export interface EventFormData {
     event: string;
     categoryEvent: string;
     tag: string[];

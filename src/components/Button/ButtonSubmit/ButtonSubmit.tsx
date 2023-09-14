@@ -2,9 +2,9 @@
 //convierte en json
 //envie en fetch
 
-import { submitProps } from '@/app/interfaces/submitProps';
+import { SubmitProps } from '@/app/interfaces/submitProps';
 
-const ButtonSubmit = ({ label }:submitProps) => {
+const ButtonSubmit = ({ label }:SubmitProps) => {
     return (
         <button type='submit'>
             {label}

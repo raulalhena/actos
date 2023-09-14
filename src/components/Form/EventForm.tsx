@@ -4,7 +4,7 @@ import { useState } from 'react';
 import Select from '@/components/Select/Select';
 import TextInput from '@/components/TextInput/TextInput';
 import categories from '@/data/category.json';
-import ButtonSubmit from '../Button/ButtonSubmit';
+import ButtonSubmit from '../Button/ButtonSubmit/ButtonSubmit';
 import { TagsInput } from 'react-tag-input-component';
 import { EventFormProps } from '@/app/interfaces/eventFormProps';
 

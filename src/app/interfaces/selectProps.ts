@@ -1,4 +1,4 @@
-export interface selectProps {
+export interface SelectProps {
     label: string;
     options: string[];
     id: string;
