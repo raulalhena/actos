@@ -35,4 +35,4 @@ jobs:
           lsof -t -i :5000 -S | xargs kill
           npm run build
           pm2 delete Actos
-          pm2 --name Actos start npm -- start
+          pm2 --name Actos start npx -- next -p 5000
