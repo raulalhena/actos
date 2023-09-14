@@ -1,7 +1,7 @@
 export interface EventFormProps  {
     event: string,
     categoryEvent: string, 
-    tag: [],
+    tag: string[],
     direction: string,
     webLink: string
 }

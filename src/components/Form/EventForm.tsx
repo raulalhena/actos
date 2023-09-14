@@ -34,7 +34,7 @@ const EventForm = () => {
         });
     };
     // Tags
-    const handleTagsChange = (newTags: []) => {
+    const handleTagsChange = (newTags: string[]) => {
         setFormData({
             ...formData,
             tag: newTags,
