@@ -1,6 +1,6 @@
 export interface textInputProps {
     label: string;
-    subtitle: string;
+    subtitle?: string;
     placeholder: string;
     id: string;
     maxLength: number;

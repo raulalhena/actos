@@ -10,6 +10,7 @@ import { EventFormProps } from '@/app/interfaces/eventFormProps';
 import styles from './EventForm.module.css';
 import { ChevronDownIcon } from '../ChevronDownIcon/ChevronDownIcon';
 import { TextArea } from '../TextArea/TextArea';
+import TextInputWithSubtitle from '../TextInputWithSubtitle/TextInputWithSubtitle';
 
 // Form
 const EventForm = () => {
@@ -145,7 +146,7 @@ const EventForm = () => {
                             />
                         </div>
                         <div className={styles.formField}>
-                            <TextInput
+                            <TextInputWithSubtitle
                                 id="organizedBy"
                                 label="Dinamizadores"
                                 subtitle="Entidades que colaboran en el evento."
