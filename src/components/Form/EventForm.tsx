@@ -5,12 +5,12 @@ import TextInput from '@/components/TextInput/TextInput';
 import categories from '@/data/category.json';
 import languages from '@/data/languages.json';
 import ButtonSubmit from '../Button/ButtonSubmit';
-import { TagsInput } from 'react-tag-input-component';
 import { EventFormProps } from '@/app/interfaces/eventFormProps';
 import styles from './EventForm.module.css';
 import { ChevronDownIcon } from '../ChevronDownIcon/ChevronDownIcon';
 import { TextArea } from '../TextArea/TextArea';
 import TextInputWithSubtitle from '../TextInputWithSubtitle/TextInputWithSubtitle';
+import TagsInputComponent from '../TagsInput/TagsInput';
 import ToggleSwitch from '../ToggleSwitch/ToggleSwitch';
 
 // Form
@@ -114,8 +114,10 @@ const EventForm = () => {
                                 />
                             </div>
                             <div className={styles.formField}>
-                                <TagsInput
+                                <TagsInputComponent
+                                    id="tags"
                                     value={formData.tags}
+                                    label="Etiquetas"
                                     onChange={handleTagsChange}
                                     name="tags"
                                     placeHolder="tags"
@@ -123,7 +125,7 @@ const EventForm = () => {
                             </div>
                             <div className={styles.formField}>
                                 <TextInput
-                                    id="direction"
+                                    id="address"
                                     label="Añade una dirección"
                                     placeholder="Escribe la dirección de tu evento."
                                     minLength={3}
@@ -207,7 +209,7 @@ const EventForm = () => {
                     {isSection3Visible && <section>
                         <p>This is the content to show/hide.</p></section>}
                 </div>
-                <ButtonSubmit label="Enviar" />
+                <ButtonSubmit label="Guardar" />
             </form>
         </div>
     );
