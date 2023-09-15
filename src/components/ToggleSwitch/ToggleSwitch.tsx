@@ -13,15 +13,13 @@ const ToggleSwitch = ({ id, label, subtitle }: ToggleSwitchProps) => {
     return (
         <div className={styles.toggleContainer}>
             <div>
-                <div>
-                    <label className={styles.label} htmlFor={id}>
-                        {label}
-                    </label>
-                    <br />
-                    <label className={styles.subtitle} htmlFor={id}>
-                        {subtitle}
-                    </label>
-                </div>
+                <label className={styles.label} htmlFor={id}>
+                    {label}
+                </label>
+                <br />
+                <label className={styles.subtitle} htmlFor={id}>
+                    {subtitle}
+                </label>
             </div>
             <div>
                 <Switch
