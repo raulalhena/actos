@@ -1,19 +1,19 @@
 .title {
  display: flex;
  align-items: center;
+ justify-content: space-between;
  gap: 10rem;
+ border-bottom: 3px solid #1c2e48;
+ margin: 0;
+ margin-bottom: 2rem;
+ padding: 0 0.5rem ;
 }
 
 .hrSmall {
   border: 1px solid #cacaca;
   width: 350px;
   margin: 0;
-}
-
-.hrMedium {
-  border: 2px solid #1c2e48;
-  width: 350px;
-  margin: 0;
+  margin-bottom: 2rem;
 }
 
 /* Para pantallas más grandes o iguales a 768px (md) */

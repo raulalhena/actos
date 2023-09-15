@@ -56,7 +56,6 @@ const EventForm = () => {
                     <h2>1 INFORMACIÓN BÁSICA</h2>
                     <IoChevronDown />
                 </section>
-                <hr className={styles.hrMedium}></hr>
                 <TextInput
                     id="event"
                     label="Nombre del evento*"
