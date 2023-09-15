@@ -1,8 +1,13 @@
 export interface EventFormProps  {
+    category?: string | undefined;
+    tags?: string[] | undefined;
+    address: string | undefined;
+    webLink: string | undefined;
+    organizedBy: string;
+    language: string | undefined;
+    event: string | undefined;
     name: string,
     description: string;
-    tags?: string[],
-    category?: string, 
     adress?: string,
     date: string,
     startTime: string,
@@ -22,7 +27,6 @@ export interface EventFormProps  {
     price?: number,
     payment?: string,
     contact?: string,
-    language: string[],
     web: string,
     visibility: boolean,
     status: boolean

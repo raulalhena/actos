@@ -7,7 +7,7 @@ const inter = Inter({ subsets: [ 'latin' ] });
 export const metadata: Metadata = {
     title: 'ACTOS',
     description: 'Crea y gestiona tus eventos de forma molona! yeahh!',
-    authors: 'Teresa Madridejos, Yumi Namie, Diego Cruz, Andreu Baltazar, Raul Alhena'
+    authors: [ 'Teresa Madridejos', 'Yumi Namie', 'Diego Cruz', 'Andreu Baltazar', 'Raul Alhena' ]
 };
 
 export default function RootLayout({

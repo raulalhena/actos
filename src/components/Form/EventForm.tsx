@@ -1,12 +1,16 @@
 'use client';
 import { useState } from 'react';
-
 import Select from '@/components/Select/Select';
 import TextInput from '@/components/TextInput/TextInput';
 import categories from '@/data/category.json';
-import { EventFormProps } from '@/app/interfaces/eventFormProps';
+import languages from '@/data/languages.json';
 import ButtonSubmit from '../Button/ButtonSubmit';
-import TagInput from '../TagInput/TagInput';
+import { TagsInput } from 'react-tag-input-component';
+import { EventFormProps } from '@/app/interfaces/eventFormProps';
+import styles from './EventForm.module.css';
+import { ChevronDownIcon } from '../ChevronDownIcon/ChevronDownIcon';
+import { TextArea } from '../TextArea/TextArea';
+import TextInputWithSubtitle from '../TextInputWithSubtitle/TextInputWithSubtitle';
 
 // Form
 const EventForm = () => {
@@ -34,14 +38,19 @@ const EventForm = () => {
         price: undefined,
         payment: '',
         contact: '',
-        language: [],
+        language: undefined,
         web: '',
         visibility: false, 
         status: false,
+        organizedBy: '',
+        address: '',
     });
-    
+    //Visibility
+    const [ isSection1Visible, setIsSection1Visible ] = useState(false);
+    const [ isSection2Visible, setIsSection2Visible ] = useState(false);
+    const [ isSection3Visible, setIsSection3Visible ] = useState(false);
     // Input
-    const handleInputChange = (event:React.ChangeEvent<HTMLInputElement>) => {
+    const handleInputChange = (event: React.ChangeEvent<HTMLInputElement>) => {
         const { id, value } = event.target;
         setFormData({
             ...formData,
@@ -49,7 +58,7 @@ const EventForm = () => {
         });
     };
     // Select
-    const handleSelectChange = (event:React.ChangeEvent<HTMLSelectElement>) => {
+    const handleSelectChange = (event: React.ChangeEvent<HTMLSelectElement>) => {
         const { id, value } = event.target;
         setFormData({
             ...formData,
@@ -64,60 +73,136 @@ const EventForm = () => {
         });
     };
     // Submit Button
-    const handlesubmit = (event:React.FormEvent) => {
+    const handlesubmit = (event: React.FormEvent) => {
         event.preventDefault();
         console.log(formData);
-
     };
 
     return (
-        <>
+        <div className={styles.form}>
             <form onSubmit={handlesubmit}>
-                <TextInput
-                    id="event"
-                    label="Nombre del evento*"
-                    placeholder="Evento"
-                    minLength={3}
-                    maxLength={120}
-                    value={formData.name}
-                    onChange={handleInputChange}
-
-                />
-                <Select
-                    id="categoryEvent"
-                    label="Category" 
-                    options={categories}
-                    value={formData.category}
-                    onChange={handleSelectChange}  
-                />
-                <TagInput
-                    label="Tags" 
-                    placeholder="tags"
-                    value={formData.tags}
-                    onChange={handleTagsChange}
-                />
-
-                <input
-                    type="date" 
-                    id='date' 
-                    value={formData.date} 
-                    onChange={handleInputChange} >
-                </input>
-
-                <TextInput 
-                    id="direction"
-                    label="Añade una dirección"
-                    placeholder="Escribe la dirección de tu evento."
-                    minLength={3}
-                    maxLength={75}
-                    value={formData.adress}
-                    onChange={handleInputChange}
-                />
-                <ButtonSubmit
-                    label="Enviar"
-                />
+                <div>
+                    <section>
+                        <div className={styles.title}>
+                            <h2>1 INFORMACIÓN BÁSICA</h2>
+                            <span onClick={() => setIsSection1Visible(!isSection1Visible)}>
+                                <ChevronDownIcon />
+                            </span>
+                        </div>
+                    </section>
+                    {isSection1Visible && (
+                        <section>
+                            <div className={styles.formField}>
+                                <TextInput
+                                    id="event"
+                                    label="Nombre del evento*"
+                                    placeholder="Evento"
+                                    minLength={3}
+                                    maxLength={120}
+                                    value={formData.event}
+                                    onChange={handleInputChange}
+                                />
+                            </div>
+                            <div className={styles.formField}>
+                                <Select
+                                    id="categoryEvent"
+                                    label="Categoría"
+                                    options={categories}
+                                    value={formData.category}
+                                    onChange={handleSelectChange}
+                                />
+                            </div>
+                            <div className={styles.formField}>
+                                <TagsInput
+                                    value={formData.tags}
+                                    onChange={handleTagsChange}
+                                    name="tags"
+                                    placeHolder="tags"
+                                />
+                            </div>
+                            <div className={styles.formField}>
+                                <TextInput
+                                    id="direction"
+                                    label="Añade una dirección"
+                                    placeholder="Escribe la dirección de tu evento."
+                                    minLength={3}
+                                    maxLength={75}
+                                    value={formData.address}
+                                    onChange={handleInputChange}
+                                />
+                            </div>
+                            <div className={styles.formField}>
+                                <TextInput
+                                    id="webLink"
+                                    label="Añade un enlace"
+                                    placeholder="Escribe el enlace de tu evento."
+                                    minLength={3}
+                                    maxLength={75}
+                                    value={formData.webLink}
+                                    onChange={handleInputChange}
+                                />
+                            </div>
+                        </section>
+                    )}
+                </div>
+                <div>
+                    <section>
+                        <div className={styles.title}>
+                            <h2>2 DETALLES</h2>
+                            <span onClick={() => setIsSection2Visible(!isSection2Visible)}>
+                                <ChevronDownIcon />
+                            </span>
+                        </div>
+                    </section>
+                    {isSection2Visible && <section>
+                        <div className={styles.formField}>
+                            <TextArea
+                                id="description"
+                                label="Descripción del evento *"
+                                placeholder="Añade una descripción a tu evento."
+                                minLength={3}
+                                maxLength={500}
+                                value={formData.description}
+                                onChange={handleInputChange}
+                            />
+                        </div>
+                        <div className={styles.formField}>
+                            <TextInputWithSubtitle
+                                id="organizedBy"
+                                label="Dinamizadores"
+                                subtitle="Entidades que colaboran en el evento."
+                                placeholder="Organizadores del evento."
+                                minLength={3}
+                                maxLength={500}
+                                value={formData.organizedBy}
+                                onChange={handleInputChange}
+                            />
+                        </div>
+                        <div className={styles.formField}>
+                            <Select
+                                id="languageEvent"
+                                label="Idioma del evento"
+                                options={languages}
+                                value={formData.language}
+                                onChange={handleSelectChange}
+                            />
+                        </div></section>}
+                </div>
+                <div>
+                    <section>
+                        <div className={styles.title}>
+                            <h2>3 INSCRIPCIONES Y ENTRADAS</h2>
+                            <span onClick={() => setIsSection3Visible(!isSection3Visible)}>
+                                <ChevronDownIcon />
+                            </span>
+                        </div>
+                    </section>
+                    {isSection3Visible && <section>
+                        <p>This is the content to show/hide.</p></section>}
+                </div>
+                <ButtonSubmit label="Enviar" />
             </form>
-        </>
+        </div>
     );
 };
 

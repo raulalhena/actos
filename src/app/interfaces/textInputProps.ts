@@ -1,10 +1,10 @@
-
-export interface TextInputProps {
+export interface textInputProps {
     label: string;
+    subtitle?: string;
     placeholder: string;
     id: string;
     maxLength: number;
     minLength: number;
-    value: string | undefined;
+    value: string;
     onChange: (event: React.ChangeEvent<HTMLInputElement>) => void;
 }
