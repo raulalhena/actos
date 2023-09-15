@@ -9,7 +9,7 @@ import { TagsInput } from 'react-tag-input-component';
 import { EventFormProps } from '@/app/interfaces/eventFormProps';
 import styles from './EventForm.module.css';
 import { ChevronDownIcon } from '../ChevronDownIcon/ChevronDownIcon';
-import TextInputXL, { TextArea } from '../TextArea/TextArea';
+import { TextArea } from '../TextArea/TextArea';
 
 // Form
 const EventForm = () => {
@@ -19,6 +19,8 @@ const EventForm = () => {
         languageEvent: '',
         tag: [],
         direction: '',
+        description: '',
+        organizedBy: '',
         webLink: '',
     });
     //Visibility
@@ -139,6 +141,18 @@ const EventForm = () => {
                                 minLength={3}
                                 maxLength={500}
                                 value={formData.description}
+                                onChange={handleInputChange}
+                            />
+                        </div>
+                        <div className={styles.formField}>
+                            <TextInput
+                                id="organizedBy"
+                                label="Dinamizadores"
+                                subtitle="Entidades que colaboran en el evento."
+                                placeholder="Organizadores del evento."
+                                minLength={3}
+                                maxLength={500}
+                                value={formData.organizedBy}
                                 onChange={handleInputChange}
                             />
                         </div>

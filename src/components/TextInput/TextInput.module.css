@@ -3,6 +3,10 @@
   color: #1c2e48;
 }
 
+.subtitle {
+  color: #cacaca;
+}
+
 .input {
   width: 500px;
   height: 40px;
@@ -13,11 +17,10 @@
 }
 
 /* Para pantallas más grandes o iguales a 768px (md) */
-@media screen and (min-width: 768px) { 
+@media screen and (min-width: 768px) {
   .input {
-  width: 350px;
-}
-
+    width: 350px;
+  }
 }
 
 /* Para pantallas más grandes o iguales a 992px (lg) */

@@ -1,4 +1,5 @@
 export interface EventFormProps  {
+    organizedBy: string;
     description: string;
     languageEvent: string;
     event: string,

@@ -2,7 +2,7 @@ import { textInputProps } from '@/app/interfaces/textInputProps';
 import styles from './TextInput.module.css';
 
 function TextInput(props: textInputProps) {
-    const { label, placeholder, id, maxLength, minLength, value, onChange } = props;
+    const { label, subtitle, placeholder, id, maxLength, minLength, value, onChange } = props;
 
     return (
         
@@ -10,6 +10,11 @@ function TextInput(props: textInputProps) {
             <label className={styles.label}
                 htmlFor={id}>{label}
             </label>
+            <br />
+            <label className={styles.subtitle}
+                htmlFor={id}>{subtitle}
+            </label>
+            
             <br />
             <input 
                 type="text" 
