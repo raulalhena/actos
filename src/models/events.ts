@@ -3,12 +3,21 @@ import User from './users';
 
 const eventSchema = new Schema (
     {
-        name: String,
-        description: String,
+        name: {
+            type: String,
+            require: true
+        },
+        description: {
+            type: String,
+            require: true
+        },
         tags: String,
         category: String,
         adress: String,
-        date: Date,
+        date: {
+            type: Date,
+            require: true
+        },
         startTime: Date,
         endTime: Date,
         timeZone: String,
@@ -20,8 +29,8 @@ const eventSchema = new Schema (
         image: String,
         video: String,
         qr: String,
-        attendees: [ User ],
-        submitted: [ User ],
+        attendees: [ { type: mongoose.Schema.Types.ObjectId, ref: User.modelName } ],
+        submitted: [ { type: mongoose.Schema.Types.ObjectId, ref: User.modelName } ],
         capacity: Number,
         price: Number,
         payment: String,

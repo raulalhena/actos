@@ -1,15 +1,21 @@
 import { NextRequest, NextResponse } from 'next/server';
+import connectDB from '@/lib/mongodb';
+import mongoose from 'mongoose';
+import Event from '@/models/events';
 import { events } from '@/data/events';
 
-export function GET() {
-    return NextResponse.json(events);
+export async function GET() {
+    await connectDB();
+    return NextResponse.json(await Event.find({}).populate('attendees'));
 }
 
 export async function POST(request: NextRequest) {
-    const data = await request.json();
-    console.log(data);
-
-    return NextResponse.json({
-        message: 'Event created.'
-    });
+    await connectDB();
+    return NextResponse.json(await Event.create({
+        attendees: [ new mongoose.Types.ObjectId('6504479ec27de5fc726cb06a') ],
+        name: 'Event3',
+        description: 'Event chachi',
+        date: Date.now()
+    }));
+    
 }
