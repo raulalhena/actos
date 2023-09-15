@@ -9,12 +9,13 @@
  padding: 0 0.5rem ;
 }
 
-.hrSmall {
-  border: 1px solid #cacaca;
-  width: 350px;
+.formField {
+  border-bottom: 2px solid #cacaca;
   margin: 0;
   margin-bottom: 2rem;
+  padding: 0 0.5rem ;
 }
+
 
 /* Para pantallas más grandes o iguales a 768px (md) */
 @media screen and (min-width: 768px) {
@@ -42,9 +43,5 @@
   .form {
     border: 1px solid blue;
     width: 900px;
-  }
-
-  .hrSmall, .hrMedium {
-    width: 750px;
   }
 }

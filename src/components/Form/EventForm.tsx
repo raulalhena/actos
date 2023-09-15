@@ -56,51 +56,53 @@ const EventForm = () => {
                     <h2>1 INFORMACIÓN BÁSICA</h2>
                     <IoChevronDown />
                 </section>
-                <TextInput
-                    id="event"
-                    label="Nombre del evento*"
-                    placeholder="Evento"
-                    minLength={3}
-                    maxLength={120}
-                    value={formData.event}
-                    onChange={handleInputChange}
+                <section className={styles.formField}>
+                    <TextInput
+                        id="event"
+                        label="Nombre del evento*"
+                        placeholder="Evento"
+                        minLength={3}
+                        maxLength={120}
+                        value={formData.event}
+                        onChange={handleInputChange}
 
-                />
-                <hr className={styles.hrSmall}></hr>
-                <Select
-                    id="categoryEvent"
-                    label="Categoría" 
-                    options={categories}
-                    value={formData.categoryEvent}
-                    onChange={handleSelectChange}  
-                />
-                <hr className={styles.hrSmall}></hr>
-                <TagsInput
-                    value={formData.tag}
-                    onChange={handleTagsChange}
-                    name="tags"
-                    placeHolder="tags"
-                />
-                <TextInput 
-                    id="direction"
-                    label="Añade una dirección"
-                    placeholder="Escribe la dirección de tu evento."
-                    minLength={3}
-                    maxLength={75}
-                    value={formData.direction}
-                    onChange={handleInputChange}
-                />
-                <hr className={styles.hrSmall}></hr>
-                <TextInput 
-                    id="webLink"
-                    label="Añade un enlace"
-                    placeholder="Escribe el enlace de tu evento."
-                    minLength={3}
-                    maxLength={75}
-                    value={formData.webLink}
-                    onChange={handleInputChange}
-                />
-                <hr className={styles.hrSmall}></hr>
+                    /></section>
+                <section className={styles.formField}>
+                    <Select
+                
+                        id="categoryEvent"
+                        label="Categoría" 
+                        options={categories}
+                        value={formData.categoryEvent}
+                        onChange={handleSelectChange}  
+                    /></section>
+                <section className={styles.formField}>
+                    <TagsInput
+                        value={formData.tag}
+                        onChange={handleTagsChange}
+                        name="tags"
+                        placeHolder="tags"
+                    /></section>
+                <section className={styles.formField}>
+                    <TextInput 
+                        id="direction"
+                        label="Añade una dirección"
+                        placeholder="Escribe la dirección de tu evento."
+                        minLength={3}
+                        maxLength={75}
+                        value={formData.direction}
+                        onChange={handleInputChange}
+                    /></section>
+                <section className={styles.formField}>
+                    <TextInput 
+                        id="webLink"
+                        label="Añade un enlace"
+                        placeholder="Escribe el enlace de tu evento."
+                        minLength={3}
+                        maxLength={75}
+                        value={formData.webLink}
+                        onChange={handleInputChange}
+                    /></section>
                 <ButtonSubmit
                     label="Enviar"
                 />
