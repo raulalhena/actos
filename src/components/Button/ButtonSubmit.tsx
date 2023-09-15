@@ -1,16 +1,3 @@
-<<<<<<< HEAD
-import { ButtonSubmitProps } from '@/app/interfaces/buttonSubmitProps';
-
-const ButtonSubmit = ({ label }:ButtonSubmitProps) => {
-    return (
-        <button type='submit'>
-            {label}
-        </button >
-    );
-};
-
-export default ButtonSubmit;
-=======
 import { ButtonSubmitProps } from '@/app/interfaces/buttonSubmitProps';
 import styles from './ButtonSubmit.module.css';
 
@@ -25,4 +12,3 @@ const ButtonSubmit = ({ label }: ButtonSubmitProps) => {
 };
 
 export default ButtonSubmit;
->>>>>>> eventpage-teresa
