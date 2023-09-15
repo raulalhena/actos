@@ -8,7 +8,7 @@ import ButtonSubmit from '../Button/ButtonSubmit';
 import { TagsInput } from 'react-tag-input-component';
 import { EventFormProps } from '@/app/interfaces/eventFormProps';
 import styles from './EventForm.module.css';
-import { IoChevronDown }  from 'react-icons/io5';
+import { ChevronDownIcon } from '../ChevronDownIcon/ChevronDownIcon';
 
 // Form
 const EventForm = () => {
@@ -52,9 +52,9 @@ const EventForm = () => {
     return (
         <div className={styles.form}>
             <form onSubmit={handlesubmit}>
-            <div><section className={styles.title}>
+                <div><section className={styles.title}>
                     <h2>1 INFORMACIÓN BÁSICA</h2>
-                    <IoChevronDown className={styles.downButton}/>
+                    <ChevronDownIcon/>
                 </section>
                 <section className={styles.formField}>
                     <TextInput
@@ -106,12 +106,12 @@ const EventForm = () => {
                 </div>
                 <div><section className={styles.title}>
                     <h2>2 DETALLES</h2>
-                    <IoChevronDown className={styles.downButton}/>
+                    <ChevronDownIcon/>
                 </section>
                 </div>
                 <div><section className={styles.title}>
                     <h2>3 INSCRIPCIONES Y ENTRADAS</h2>
-                    <IoChevronDown className={styles.downButton}/>
+                    <ChevronDownIcon />
                 </section>
                 </div>
                 <ButtonSubmit
