@@ -29,15 +29,8 @@ jobs:
         script: |
           cd /home/${{ secrets.USERNAME }}/apps/actos/
           git pull origin main
-          git status
-          cd frontend
           nvm use v18.16.1
-          npm install
-          lsof -t -i :5000 -S | xargs kill -9
-          npm run build
-          cp -r ./dist/* /var/www/actos/html/
-          cd ../backend
           npm install
           npm run build
           pm2 delete Actos
-          pm2 --name Actos start npm -- start
+          pm2 --name Actos start npx -- next -p 5000

@@ -1,8 +1,8 @@
 import { NextResponse } from 'next/server';
 import { events } from '@/data/events';
-import { NextApiRequest } from 'next';
+import { NextRequest } from 'next/server';
 
-export function GET(request: NextApiRequest, { params }: {params: {id: number}} ) {
+export function GET(request: NextRequest, { params }: {params: {id: number}} ) {
     const event = events.find(event => event.id === params.id);
     console.log(event);
 
