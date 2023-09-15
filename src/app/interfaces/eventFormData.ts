@@ -1,7 +1,7 @@
 export interface eventFormData {
     event: string;
     categoryEvent: string;
-    tag: string[];
+    tags: string[];
     direction: string;
     webLink: string;
 }
