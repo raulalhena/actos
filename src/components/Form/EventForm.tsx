@@ -20,7 +20,7 @@ const EventForm = () => {
         startTime: '',
         endTime: '',
         timeZone: '',
-        showStartTime: true, // Set default values as needed
+        showStartTime: true,
         showEndTime: true,
         confirmed: false,
         type: '',
@@ -83,19 +83,27 @@ const EventForm = () => {
                     onChange={handleInputChange}
 
                 />
-                <Select
+                {/* <Select
                     id="categoryEvent"
                     label="category" 
                     options={categories}
                     value={formData.category}
                     onChange={handleSelectChange}  
-                />
+                /> */}
                 <TagsInput
                     value={formData.tags}
                     onChange={handleTagsChange}
                     name="tags"
                     placeHolder="tags"
                 />
+
+                <input
+                    type="date" 
+                    id='date' 
+                    value={formData.date} 
+                    onChange={handleInputChange} >
+                </input>
+
                 <TextInput 
                     id="direction"
                     label="Añade una dirección"
