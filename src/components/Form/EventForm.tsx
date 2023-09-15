@@ -202,7 +202,7 @@ const EventForm = () => {
                     {isSection3Visible && <section>
                         <p>This is the content to show/hide.</p></section>}
                 </div>
-                <ButtonSubmit label="Enviar" />
+                <ButtonSubmit label="Guardar" />
             </form>
         </div>
     );
