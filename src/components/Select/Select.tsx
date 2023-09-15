@@ -1,6 +1,6 @@
-import { selectProps } from '@/app/interfaces/selectProps';
+import { SelectProps } from '@/app/interfaces/selectProps';
 
-function Select(props: selectProps) {
+function Select(props: SelectProps) {
     const { label, options, id, value, onChange } = props;
 
     return (

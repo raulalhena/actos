@@ -11,12 +11,35 @@ import { EventFormProps } from '@/app/interfaces/eventFormProps';
 // Form
 const EventForm = () => {
     const [ formData, setFormData ] = useState<EventFormProps>({
-        event: '',
-        categoryEvent: '', 
-        tag: [],
-        direction: '',
-        webLink: '',
+        name: '',
+        description: '',
+        tags: [],
+        category: '',
+        adress: '',
+        date: '',
+        startTime: '',
+        endTime: '',
+        timeZone: '',
+        showStartTime: true, // Set default values as needed
+        showEndTime: true,
+        confirmed: false,
+        type: '',
+        mode: '',
+        image: '',
+        video: '',
+        qr: [],
+        attendees: [],
+        submitted: [],
+        capacity: 0, 
+        price: undefined,
+        payment: '',
+        contact: '',
+        language: [],
+        web: '',
+        visibility: false, 
+        status: false, // Set default status
     });
+    
     // Input
     const handleInputChange = (event:React.ChangeEvent<HTMLInputElement>) => {
         const { id, value } = event.target;
@@ -37,7 +60,7 @@ const EventForm = () => {
     const handleTagsChange = (newTags: string[]) => {
         setFormData({
             ...formData,
-            tag: newTags,
+            tags: newTags,
         });
     };
     // Submit Button
@@ -56,7 +79,7 @@ const EventForm = () => {
                     placeholder="Evento"
                     minLength={3}
                     maxLength={120}
-                    value={formData.event}
+                    value={formData.name}
                     onChange={handleInputChange}
 
                 />
@@ -64,11 +87,11 @@ const EventForm = () => {
                     id="categoryEvent"
                     label="category" 
                     options={categories}
-                    value={formData.categoryEvent}
+                    value={formData.category}
                     onChange={handleSelectChange}  
                 />
                 <TagsInput
-                    value={formData.tag}
+                    value={formData.tags}
                     onChange={handleTagsChange}
                     name="tags"
                     placeHolder="tags"
@@ -79,16 +102,7 @@ const EventForm = () => {
                     placeholder="Escribe la dirección de tu evento."
                     minLength={3}
                     maxLength={75}
-                    value={formData.direction}
-                    onChange={handleInputChange}
-                />
-                <TextInput 
-                    id="webLink"
-                    label="Añade un enlace"
-                    placeholder="Escribe el enlace de tu evento."
-                    minLength={3}
-                    maxLength={75}
-                    value={formData.webLink}
+                    value={formData.adress}
                     onChange={handleInputChange}
                 />
                 <ButtonSubmit

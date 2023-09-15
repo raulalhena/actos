@@ -45,7 +45,7 @@ Did you like our application? We'd love to hear your feedback. Please don't hesi
         "mode": ["Presencial", "Online"],
         "image": "URL a la imagen",
         "video": "URL al video",
-        "qr": "URL a la imagen",
+        "qr": "URL a la imagen",//?????
         "attendees": ["user2", "user3"],
         "submitted": ["user1", "user2", "user3"],
         "capacity": 100,
