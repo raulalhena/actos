@@ -1,22 +1,23 @@
-"use client";
-import { useState } from "react";
-import Select from "@/components/Select/Select";
-import TextInput from "@/components/TextInput/TextInput";
-import categories from "@/data/category.json";
-import ButtonSubmit from "../Button/ButtonSubmit";
-import { TagsInput } from "react-tag-input-component";
-import { EventFormProps } from "@/app/interfaces/eventFormProps";
-import styles from "./EventForm.module.css";
-import { ChevronDownIcon } from "../ChevronDownIcon/ChevronDownIcon";
+'use client';
+import { useState } from 'react';
+import Select from '@/components/Select/Select';
+import TextInput from '@/components/TextInput/TextInput';
+import categories from '@/data/category.json';
+import ButtonSubmit from '../Button/ButtonSubmit';
+import { TagsInput } from 'react-tag-input-component';
+import { EventFormProps } from '@/app/interfaces/eventFormProps';
+import styles from './EventForm.module.css';
+import { ChevronDownIcon } from '../ChevronDownIcon/ChevronDownIcon';
+import TextInputXL from '../TextInputXL/TextInputXL';
 
 // Form
 const EventForm = () => {
     const [ formData, setFormData ] = useState<EventFormProps>({
-        event: "",
-        categoryEvent: "",
+        event: '',
+        categoryEvent: '',
         tag: [],
-        direction: "",
-        webLink: "",
+        direction: '',
+        webLink: '',
     });
     //Visibility
     const [ isSection1Visible, setIsSection1Visible ] = useState(false);
@@ -128,7 +129,17 @@ const EventForm = () => {
                         </div>
                     </section>
                     {isSection2Visible && <section>
-                        <p>This is the content to show/hide.</p></section>}
+                        <div className={styles.formField}>
+                                <TextInputXL
+                                    id="direction"
+                                    label="Descripción del evento *"
+                                    placeholder="Añade una descripción a tu evento."
+                                    minLength={3}
+                                    maxLength={75}
+                                    value={formData.direction}
+                                    onChange={handleInputChange}
+                                />
+                            </div></section>}
                 </div>
                 <div>
                     <section>
