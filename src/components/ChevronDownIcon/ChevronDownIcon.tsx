@@ -3,7 +3,6 @@ import styles from './ChevrownDownIcon.module.css';
 import { useState } from 'react';
 
 export const ChevronDownIcon = () => {
-    //Rotation
     const [ isRotated, setIsRotated ] = useState(false); 
 
     const toggleRotation = () => {
@@ -12,7 +11,7 @@ export const ChevronDownIcon = () => {
     return (
         <IoChevronDown
             className={`${styles.downButton} ${isRotated ? styles.rotated : ''}`}
-            onClick={toggleRotation} // Agregar evento de clic para cambiar el estado
+            onClick={toggleRotation}
         />
     );
 };
