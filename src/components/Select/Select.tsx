@@ -1,16 +1,17 @@
-interface SelectProps {
-    label: string;
-    options: string[];
-    id: string;
-  }
-  
+import { SelectProps } from '@/app/interfaces/selectProps';
+import styles from './Select.module.css';
+
 function Select(props: SelectProps) {
-    const { label, options, id } = props;
-  
+    const { label, options, id, value, onChange } = props;
+
     return (
         <div>
-            <label htmlFor={id}>{label}</label>
-            <select id={id}>
+            <label className={styles.label}
+                htmlFor={id}> 
+                {label} 
+            </label>
+            <br />
+            <select className={styles.input} id={id} value={value} onChange={onChange}>
                 {options.map((option, index) => (
                     <option key={index} value={option}>
                         {option}
@@ -20,5 +21,5 @@ function Select(props: SelectProps) {
         </div>
     );
 }
-  
+
 export default Select;

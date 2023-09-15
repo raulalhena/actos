@@ -1,7 +1,7 @@
-import { textInputProps } from '@/app/interfaces/textInputProps';
+import { TextInputProps } from '@/app/interfaces/textInputProps';
 import styles from './TextInput.module.css';
 
-function TextInput(props: textInputProps) {
+function TextInput(props: TextInputProps) {
     const { label, placeholder, id, maxLength, minLength, value, onChange } = props;
 
     return (
