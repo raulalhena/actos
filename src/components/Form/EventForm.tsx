@@ -4,6 +4,7 @@ import Select from '@/components/Select/Select';
 import TextInput from '@/components/TextInput/TextInput';
 import categories from '@/data/category.json';
 import languages from '@/data/languages.json';
+import timeZone from '@/data/timeZone.json';
 import ButtonSubmit from '../Button/ButtonSubmit';
 import { EventFormProps } from '@/app/interfaces/eventFormProps';
 import styles from './EventForm.module.css';
@@ -146,11 +147,20 @@ const EventForm = () => {
                                 />
                             </div>
                             <div className={styles.formField}>
+                                <Select
+                                    id="timeZone"
+                                    label="Zona Horária"
+                                    options={timeZone}
+                                    value={formData.timeZone}
+                                    onChange={handleSelectChange}
+                                />
+                            
                                 <ToggleSwitch 
                                     id="mySwitch" 
                                     label="Cualquiera puede ver los horários del evento" 
                                     subtitle="Si se desactiva, las horas quedarán ocultas" />
                             </div>
+
                         </section>
                     )}
                 </div>

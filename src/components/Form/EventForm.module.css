@@ -1,12 +1,12 @@
 .title {
- display: flex;
- align-items: center;
- justify-content: space-between;
- gap: 10rem;
- border-bottom: 3px solid #1c2e48;
- margin: 0;
- margin-bottom: 2rem;
- padding: 0 0.5rem ;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 10rem;
+  border-bottom: 3px solid #1c2e48;
+  margin: 0;
+  margin-bottom: 2rem;
+  padding: 0 0.5rem ;
 }
 
 .formField {
@@ -16,6 +16,8 @@
   padding: 0 0.5rem ;
   display: flex;
   justify-content: center;
+  align-items: center;
+  flex-direction: column;
 }
 
 
