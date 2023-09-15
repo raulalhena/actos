@@ -9,8 +9,13 @@
  padding: 0 0.5rem ;
 }
 
+.downButton {
+  font-size: 20pt;
+  color:  #1c2e48;
+}
+
 .formField {
-  border-bottom: 2px solid #cacaca;
+  border-bottom: 1px solid #cacaca;
   margin: 0;
   margin-bottom: 2rem;
   padding: 0 0.5rem ;

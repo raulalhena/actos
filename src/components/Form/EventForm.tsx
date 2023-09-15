@@ -54,7 +54,7 @@ const EventForm = () => {
             <form onSubmit={handlesubmit}>
                 <div><section className={styles.title}>
                     <h2>1 INFORMACIÓN BÁSICA</h2>
-                    <IoChevronDown />
+                    <IoChevronDown className={styles.downButton}/>
                 </section>
                 <section className={styles.formField}>
                     <TextInput
@@ -103,10 +103,21 @@ const EventForm = () => {
                         value={formData.webLink}
                         onChange={handleInputChange}
                     /></section>
+                
+                </div>
+                <div><section className={styles.title}>
+                    <h2>2 DETALLES</h2>
+                    <IoChevronDown className={styles.downButton}/>
+                </section>
+                </div>
+                <div><section className={styles.title}>
+                    <h2>3 INSCRIPCIONES Y ENTRADAS</h2>
+                    <IoChevronDown className={styles.downButton}/>
+                </section>
+                </div>
                 <ButtonSubmit
                     label="Enviar"
                 />
-                </div>
             </form>
         </div>
     );
