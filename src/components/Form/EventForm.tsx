@@ -11,6 +11,7 @@ import styles from './EventForm.module.css';
 import { ChevronDownIcon } from '../ChevronDownIcon/ChevronDownIcon';
 import { TextArea } from '../TextArea/TextArea';
 import TextInputWithSubtitle from '../TextInputWithSubtitle/TextInputWithSubtitle';
+import ToggleSwitch from '../ToggleSwitch/ToggleSwitch';
 
 // Form
 const EventForm = () => {
@@ -99,7 +100,7 @@ const EventForm = () => {
                                     placeholder="Evento"
                                     minLength={3}
                                     maxLength={120}
-                                    value={formData.event}
+                                    value={formData.name}
                                     onChange={handleInputChange}
                                 />
                             </div>
@@ -141,6 +142,12 @@ const EventForm = () => {
                                     value={formData.webLink}
                                     onChange={handleInputChange}
                                 />
+                            </div>
+                            <div className={styles.formField}>
+                                <ToggleSwitch 
+                                    id="mySwitch" 
+                                    label="Cualquiera puede ver los horários del evento" 
+                                    subtitle="Si se desactiva, las horas quedarán ocultas" />
                             </div>
                         </section>
                     )}
