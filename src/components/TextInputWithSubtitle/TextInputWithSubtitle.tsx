@@ -1,4 +1,4 @@
-import { textInputWithSubtitleProps } from '@/app/interfaces/TextInputWithSubtitleProps';
+import { textInputWithSubtitleProps } from '@/app/interfaces/textInputWithSubtitleProps';
 import styles from './TextInputWithSubtitle.module.css';
 
 function TextInputWithSubtitle(props: textInputWithSubtitleProps) {

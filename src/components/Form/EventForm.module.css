@@ -23,7 +23,7 @@
 @media screen and (min-width: 768px) {
   .form {
     width: 450px;
-    border: 1px solid blue;
+    /* border: 1px solid blue; */
   }
   
 }
