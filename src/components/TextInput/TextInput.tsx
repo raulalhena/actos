@@ -1,17 +1,25 @@
-interface TextInputProps {
-    label: string;
-    placeholder: string;
-    id: string;
-}
+import { TextInputProps } from '@/app/interfaces/textInputProps';
+import styles from './TextInput.module.css';
 
 function TextInput(props: TextInputProps) {
-    const { label, placeholder, id } = props;
+    const { label, placeholder, id, maxLength, minLength, value, onChange } = props;
 
     return (
         
         <div>
-            <label htmlFor={id}>{label}</label>
-            <input type="text" id={id} placeholder={placeholder} />
+            <label className={styles.label}
+                htmlFor={id}>{label}
+            </label>
+            <br />
+            <input 
+                type="text" 
+                id={id} 
+                placeholder={placeholder}
+                minLength={minLength} 
+                maxLength={maxLength}
+                value={value}
+                onChange={onChange}
+                className={styles.input}            />
         </div>
         
     );

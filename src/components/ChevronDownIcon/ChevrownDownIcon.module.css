@@ -1,0 +1,8 @@
+.downButton {
+  font-size: 20pt;
+  color: #1c2e48;
+}
+
+.rotated {
+  transform: rotate(180deg);
+}
