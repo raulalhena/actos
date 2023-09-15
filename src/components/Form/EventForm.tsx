@@ -52,7 +52,7 @@ const EventForm = () => {
     return (
         <div className={styles.form}>
             <form onSubmit={handlesubmit}>
-                <div><section className={styles.title}>
+            <div><section className={styles.title}>
                     <h2>1 INFORMACIÓN BÁSICA</h2>
                     <IoChevronDown className={styles.downButton}/>
                 </section>
@@ -103,7 +103,6 @@ const EventForm = () => {
                         value={formData.webLink}
                         onChange={handleInputChange}
                     /></section>
-                
                 </div>
                 <div><section className={styles.title}>
                     <h2>2 DETALLES</h2>
