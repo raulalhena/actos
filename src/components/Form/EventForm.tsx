@@ -5,9 +5,10 @@ import Select from '@/components/Select/Select';
 import TextInput from '@/components/TextInput/TextInput';
 import categories from '@/data/category.json';
 import ButtonSubmit from '../Button/ButtonSubmit';
-// import { TagsInput } from 'react-tag-input-component';
+import { TagsInput } from 'react-tag-input-component';
 import { EventFormProps } from '@/app/interfaces/eventFormProps';
 import styles from './EventForm.module.css';
+import { IoChevronDown }  from 'react-icons/io5';
 
 // Form
 const EventForm = () => {
@@ -49,8 +50,13 @@ const EventForm = () => {
     };
 
     return (
-        <>
+        <div className={styles.form}>
             <form onSubmit={handlesubmit}>
+                <div><section className={styles.title}>
+                    <h2>1 INFORMACIÓN BÁSICA</h2>
+                    <IoChevronDown />
+                </section>
+                <hr className={styles.hrMedium}></hr>
                 <TextInput
                     id="event"
                     label="Nombre del evento*"
@@ -70,12 +76,12 @@ const EventForm = () => {
                     onChange={handleSelectChange}  
                 />
                 <hr className={styles.hrSmall}></hr>
-                {/* <TagsInput
+                <TagsInput
                     value={formData.tag}
                     onChange={handleTagsChange}
                     name="tags"
                     placeHolder="tags"
-                /> */}
+                />
                 <TextInput 
                     id="direction"
                     label="Añade una dirección"
@@ -99,8 +105,9 @@ const EventForm = () => {
                 <ButtonSubmit
                     label="Enviar"
                 />
+                </div>
             </form>
-        </>
+        </div>
     );
 };
 

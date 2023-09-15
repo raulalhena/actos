@@ -1,5 +1,5 @@
 import { selectProps } from '@/app/interfaces/selectProps';
-import styles from './Select.module.css'
+import styles from './Select.module.css';
 
 function Select(props: selectProps) {
     const { label, options, id, value, onChange } = props;
