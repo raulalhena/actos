@@ -1,7 +1,7 @@
 import { textInputProps } from '@/app/interfaces/textInputProps';
-import styles from './TextInputXL.module.css';
+import styles from './TextArea.module.css';
 
-function TextInputXL(props: textInputProps) {
+export const TextArea = (props: textInputProps) => {
     const { label, placeholder, id, maxLength, minLength, value, onChange } = props;
 
     return (
@@ -23,6 +23,4 @@ function TextInputXL(props: textInputProps) {
         </div>
         
     );
-}
-
-export default TextInputXL;
+};

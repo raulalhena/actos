@@ -3,18 +3,20 @@ import { useState } from 'react';
 import Select from '@/components/Select/Select';
 import TextInput from '@/components/TextInput/TextInput';
 import categories from '@/data/category.json';
+import languages from '@/data/languages.json';
 import ButtonSubmit from '../Button/ButtonSubmit';
 import { TagsInput } from 'react-tag-input-component';
 import { EventFormProps } from '@/app/interfaces/eventFormProps';
 import styles from './EventForm.module.css';
 import { ChevronDownIcon } from '../ChevronDownIcon/ChevronDownIcon';
-import TextInputXL from '../TextInputXL/TextInputXL';
+import TextInputXL, { TextArea } from '../TextArea/TextArea';
 
 // Form
 const EventForm = () => {
     const [ formData, setFormData ] = useState<EventFormProps>({
         event: '',
         categoryEvent: '',
+        languageEvent: '',
         tag: [],
         direction: '',
         webLink: '',
@@ -130,16 +132,25 @@ const EventForm = () => {
                     </section>
                     {isSection2Visible && <section>
                         <div className={styles.formField}>
-                                <TextInputXL
-                                    id="direction"
-                                    label="Descripción del evento *"
-                                    placeholder="Añade una descripción a tu evento."
-                                    minLength={3}
-                                    maxLength={75}
-                                    value={formData.direction}
-                                    onChange={handleInputChange}
-                                />
-                            </div></section>}
+                            <TextArea
+                                id="description"
+                                label="Descripción del evento *"
+                                placeholder="Añade una descripción a tu evento."
+                                minLength={3}
+                                maxLength={500}
+                                value={formData.description}
+                                onChange={handleInputChange}
+                            />
+                        </div>
+                        <div className={styles.formField}>
+                            <Select
+                                id="languageEvent"
+                                label="Idioma del evento"
+                                options={languages}
+                                value={formData.languageEvent}
+                                onChange={handleSelectChange}
+                            />
+                        </div></section>}
                 </div>
                 <div>
                     <section>
