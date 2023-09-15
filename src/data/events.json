@@ -27,7 +27,13 @@
         "language": ["Castellano", "Catalán", "Inglés"],
         "web": "URL a la web",
         "visibility": 0,
-        "status": 0
+        "status": 0,
+        "customForm": 0,
+        "form": {
+            "id": "uuid()",
+            "field1": "dkdkd",
+            "field2": "asdfas;dlkfj"
+        }
     },
     {
         "id": 2,
