@@ -1,9 +1,9 @@
 export interface TagsInputProps {
     label: string;
-    placeholder: string;
+    placeHolder: string;
     id: string;
-    value: string;
-    onChange: (event: React.ChangeEvent<HTMLInputElement>) => void;
+    value: string[] | undefined;
+    onChange: (tags: string[]) => void
     tagStyle?: React.CSSProperties;
     inputStyle?: React.CSSProperties;
 }

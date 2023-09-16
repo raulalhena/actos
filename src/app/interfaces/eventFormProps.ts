@@ -1,14 +1,11 @@
 export interface EventFormProps  {
-    category?: string | undefined;
-    tags?: string[] | undefined;
-    address: string | undefined;
-    webLink: string | undefined;
-    organizedBy: string;
-    language: string | undefined;
-    event: string | undefined;
     name: string,
-    description: string;
-    adress?: string,
+    category?: string;
+    tags?: string[];
+    mode: string,
+    type: string,
+    address?: string;
+    webLink?: string;
     date: string,
     startTime: string,
     endTime: string,
@@ -16,18 +13,20 @@ export interface EventFormProps  {
     showStartTime?: boolean,
     showEndTime?: boolean,
     confirmed?: boolean,
-    type: string,
-    mode: string,
+    description: string;
+    web?: string,
+    organizedBy?: string;
+    contact?: string,
+    isPrivate: boolean;
+    language: string;
     image?: string,
     video?: string,
+    capacity?: number,
     qr?: string[],
-    attendees: string[],
-    submitted: string[],
-    capacity: number,
+    attendees?: string[],
+    submitted?: string[],
     price?: number,
     payment?: string,
-    contact?: string,
-    web: string,
     visibility: boolean,
     status: boolean
 }

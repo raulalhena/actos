@@ -5,6 +5,6 @@ export interface textInputWithSubtitleProps {
     id: string;
     maxLength: number;
     minLength: number;
-    value: string;
+    value: number | string | undefined;
     onChange: (event: React.ChangeEvent<HTMLInputElement>) => void;
 }
