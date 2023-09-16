@@ -6,7 +6,9 @@ const page = () => {
     return (
         <div>
             <section className={styles.header}>Aquí va una imagen</section>
-            <LogInForm />
+            <div className={styles.container}>
+                <LogInForm />
+            </div>
         </div>
     );
 };

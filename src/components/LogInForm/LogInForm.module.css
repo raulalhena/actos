@@ -1,5 +1,9 @@
 .container {
-    margin: 3rem 2rem;
+    margin: 3rem 0rem;
+    width: 100vw;
+    display: flex;
+    align-items: center;
+    justify-content: center;
 }
 
 .registerTitle {
@@ -20,9 +24,5 @@
 
 .forgotPasswordLink {
     text-align: center;
-}
-
-.customInput {
-    color: blue;
-    width: 1000px;
+    margin-bottom: 4rem;
 }

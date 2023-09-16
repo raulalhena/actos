@@ -14,7 +14,7 @@ function Select(props: SelectProps) {
             <select className={styles.input} id={id} value={value} onChange={onChange}>
                 {options.map((option, index) => (
                     <option key={index} value={option}>
-                        {option}
+                        {option} 
                     </option>
                 ))}
             </select>

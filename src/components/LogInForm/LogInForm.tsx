@@ -5,14 +5,12 @@ import ButtonSubmit from '@/components/Button/ButtonSubmit';
 import { LogInProps } from '@/app/interfaces/logInProps';
 
 const LogInForm = () => {
-    const [logInData, setLogInData] = useState<LogInProps>({
+    const [ logInData, setLogInData ] = useState<LogInProps>({
         email: '',
         password: '',
     });
-
-    const [passwordError, setPasswordError] = useState<string | null>(null);
-    const [emailError, setEmailError] = useState<string | null>(null);
-
+    const [ passwordError, setPasswordError ] = useState<string | null>(null);
+    const [ emailError, setEmailError ] = useState<string | null>(null);
     const handleInputChange = (event: React.ChangeEvent<HTMLInputElement>) => {
         const { id, value } = event.target;
         setLogInData({
@@ -26,7 +24,6 @@ const LogInForm = () => {
 
         // Validate password
         const isValidPassword = validatePassword(logInData.password);
-
         if (!isValidPassword) {
             setPasswordError(
                 'La contraseña debe tener al menos una mayúscula, un número y un carácter especial.'
@@ -37,7 +34,6 @@ const LogInForm = () => {
 
         // Validate email
         const isValidEmail = validateEmail(logInData.email);
-
         if (!isValidEmail) {
             setEmailError('El email no tiene un formato válido.');
         } else {
@@ -49,20 +45,23 @@ const LogInForm = () => {
     // Function to validate password
     const validatePassword = (password: string) => {
         const passwordRegex =
-            /^(?=.*[A-Z])(?=.*\d)(?=.*[@$!%*?&])[A-Za-z\d@$!%*?&]+$/;
+      /^(?=.*[A-Z])(?=.*\d)(?=.*[@$!%*?&])[A-Za-z\d@$!%*?&]+$/;
         return passwordRegex.test(password);
     };
 
     // Function to validate email
     const validateEmail = (email: string) => {
-        const emailRegex =
-            /^[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,}$/i;
+        const emailRegex = /^[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,}$/i;
         return emailRegex.test(email);
     };
 
     return (
-        <div className={styles.logInFormContainer}>
+        <div className={styles.container}>
             <form onSubmit={handleSubmit}>
+                <section className={styles.registerTitle}>
+                    <h2>¿No tienes cuenta?</h2>
+                    <h2 className={styles.registerLink}>Regístrate</h2>
+                </section>
                 <section className={styles.logInForm}>
                     <h1>Iniciar sesión</h1>
                     <TextInput

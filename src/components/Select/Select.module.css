@@ -12,7 +12,16 @@
   background-color: white;
   color: #8f8f8f;
   margin: 1rem 0 2rem 0;
+  font-size: 12px;
 }
+
+.input:focus {
+  border-radius: 0.3125rem;
+  border: 1.5px solid #1C2E48!important;
+  box-shadow: 0 0 5px rgba(0, 0, 0, 0.1);
+  outline: none;
+}
+
 
 /* Para pantallas más grandes o iguales a 768px (md) */
 @media screen and (min-width: 768px) {
