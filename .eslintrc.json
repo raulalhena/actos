@@ -1,5 +1,9 @@
 {
-  "extends": ["eslint-config-next"],
+  "extends": [
+    "eslint-config-next",
+    "plugin:testing-library/react",
+    "plugin:jest-dom/recommend"
+  ],
   "parser": "@typescript-eslint/parser",
   "plugins": ["@typescript-eslint"],
   "rules": {
