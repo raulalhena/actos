@@ -89,7 +89,9 @@ const LogInForm = () => {
             ¿Has olvidado tu contraseña?
                     </h3>
                 </section>
-                <ButtonSubmit label="Iniciar sesión" />
+                <div className={styles.buttonSection}>
+                    <ButtonSubmit label="Iniciar sesión" />
+                </div>
             </form>
         </div>
     );

@@ -243,8 +243,9 @@ const EventForm = () => {
                 </SectionForm>
                 <p style={{ color: 'red' }}>* Rellena todos los campos obligatorios para poder publicar tu evento.</p>
 
-                <ButtonSubmit label="Guardar" />
-
+                <div className={styles.buttonSection}>
+                    <ButtonSubmit label="Guardar" />
+                </div>
             </form>
         </div>
     );
