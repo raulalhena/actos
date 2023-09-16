@@ -1,5 +1,5 @@
 .tagContainer {
-  width: 100%;
+  width: 350px;
   margin: 1rem 0 2rem 0;
 }
 
@@ -18,7 +18,7 @@
 /* Para pantallas más grandes o iguales a 992px (lg) */
 @media screen and (min-width: 992px) {
   .tagContainer {
-  width: 350px;
+  width: 500px;
   }
 }
 
