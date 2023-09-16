@@ -11,6 +11,7 @@ import { ChevronDownIcon } from '../ChevronDownIcon/ChevronDownIcon';
 import { TextArea } from '../TextArea/TextArea';
 import TextInputWithSubtitle from '../TextInputWithSubtitle/TextInputWithSubtitle';
 import TagsInputComponent from '../TagsInput/TagsInput';
+import ToggleSwitchInput from '../ToggleSwitchInput/ToggleSwitchInput';
 
 // Form
 const EventForm = () => {
@@ -77,6 +78,10 @@ const EventForm = () => {
         event.preventDefault();
         console.log(formData);
     };
+    //Toggle
+    const logState = state => {
+        console.log("Toggled:", state)
+    }
 
     return (
         <div className={styles.form}>
@@ -203,6 +208,7 @@ const EventForm = () => {
                         <p>This is the content to show/hide.</p></section>}
                 </div>
                 <ButtonSubmit label="Guardar" />
+                <ToggleSwitchInput />
             </form>
         </div>
     );
