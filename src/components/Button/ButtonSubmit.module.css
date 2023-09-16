@@ -3,7 +3,7 @@
     justify-content: flex-end;
 }
 
-.buttonSubmit {
+.button {
   all: unset;
   width: fit-content;
   height: fit-content;
@@ -21,11 +21,11 @@
   text-transform: uppercase;
   box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
 }
-.buttonSubmit:hover, .buttonSubmit:active {
+.button:hover, .button:active {
     cursor: pointer;
   }
 
-.buttonSubmit:active {
+.button:active {
   background: #ffffff;
   color: #e15a40;
   border: 1.5px solid #e15a40;

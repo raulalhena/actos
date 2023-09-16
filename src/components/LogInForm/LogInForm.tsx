@@ -23,13 +23,13 @@ const LogInForm = () => {
         console.log(logInData);
     }; 
     return (
-        <div className={styles.logInFormContainer}>
+        <div className={styles.container}>
             <form onSubmit={handlesubmit}>
                 <section className={styles.registerTitle}>
                     <h2>¿No tienes cuenta?</h2>
                     <h2 className={styles.registerLink}>Regístrate</h2>
                 </section>
-                <section className={styles.logInForm}>
+                <section className={styles.form}>
                     <h1>Iniciar sesión</h1>
                     <TextInput
                         id="email"
@@ -40,15 +40,16 @@ const LogInForm = () => {
                         value={logInData.email}
                         onChange={handleInputChange}
                         className={styles.customInput}                   />
-                    {/* <TextInput
-                        id="email"
+                    <TextInput
+                        id="password"
                         label=""
-                        placeholder="Email"
+                        placeholder="Contraseña"
                         minLength={3}
                         maxLength={175}
-                        value={logInData.email}
+                        value={logInData.password}
                         onChange={handleInputChange}
-                    /> */}
+                        isPassword={true} 
+                    />
                     <h3 className={styles.forgotPasswordLink}>¿Has olvidado tu contraseña?</h3>
                 </section>
                 <ButtonSubmit  label="Iniciar sesión"  />
