@@ -1,0 +1,28 @@
+.logInFormContainer {
+    margin: 3rem 2rem;
+}
+
+.registerTitle {
+    display: flex;
+    gap: 0.5rem;
+    justify-content: center;
+    margin-bottom: 3rem;
+}
+
+.registerLink {
+    color: #e15a40;
+    font-weight: 700;
+}
+
+.logInForm {
+    margin-bottom: 5rem;
+}
+
+.forgotPasswordLink {
+    text-align: center;
+}
+
+.customInput {
+    color: blue;
+    width: 1000px;
+}
