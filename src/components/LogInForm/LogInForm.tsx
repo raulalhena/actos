@@ -1,35 +1,69 @@
-'use client';
+import React, { useState } from 'react';
 import TextInput from '@/components/TextInput/TextInput';
 import styles from './LogInForm.module.css';
 import ButtonSubmit from '@/components/Button/ButtonSubmit';
-import { useState } from 'react';
 import { LogInProps } from '@/app/interfaces/logInProps';
 
 const LogInForm = () => {
-    const [ logInData, setLogInData ] = useState<LogInProps>({
+    const [logInData, setLogInData] = useState<LogInProps>({
         email: '',
-        password: '' });
-        // Input
+        password: '',
+    });
+
+    const [passwordError, setPasswordError] = useState<string | null>(null);
+    const [emailError, setEmailError] = useState<string | null>(null);
+
     const handleInputChange = (event: React.ChangeEvent<HTMLInputElement>) => {
         const { id, value } = event.target;
         setLogInData({
             ...logInData,
             [id]: value,
         });
-    };   
-    // Submit Button
-    const handlesubmit = (event: React.FormEvent) => {
+    };
+
+    const handleSubmit = (event: React.FormEvent) => {
         event.preventDefault();
-        console.log(logInData);
-    }; 
+
+        // Validate password
+        const isValidPassword = validatePassword(logInData.password);
+
+        if (!isValidPassword) {
+            setPasswordError(
+                'La contraseña debe tener al menos una mayúscula, un número y un carácter especial.'
+            );
+        } else {
+            setPasswordError(null);
+        }
+
+        // Validate email
+        const isValidEmail = validateEmail(logInData.email);
+
+        if (!isValidEmail) {
+            setEmailError('El email no tiene un formato válido.');
+        } else {
+            setEmailError(null);
+            console.log(logInData);
+        }
+    };
+
+    // Function to validate password
+    const validatePassword = (password: string) => {
+        const passwordRegex =
+            /^(?=.*[A-Z])(?=.*\d)(?=.*[@$!%*?&])[A-Za-z\d@$!%*?&]+$/;
+        return passwordRegex.test(password);
+    };
+
+    // Function to validate email
+    const validateEmail = (email: string) => {
+        const emailRegex =
+            /^[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,}$/i;
+        return emailRegex.test(email);
+    };
+
     return (
-        <div className={styles.container}>
-            <form onSubmit={handlesubmit}>
-                <section className={styles.registerTitle}>
-                    <h2>¿No tienes cuenta?</h2>
-                    <h2 className={styles.registerLink}>Regístrate</h2>
-                </section>
-                <section className={styles.form}>
+        <div className={styles.logInFormContainer}>
+            <form onSubmit={handleSubmit}>
+                <section className={styles.logInForm}>
                     <h1>Iniciar sesión</h1>
                     <TextInput
                         id="email"
@@ -39,7 +73,8 @@ const LogInForm = () => {
                         maxLength={175}
                         value={logInData.email}
                         onChange={handleInputChange}
-                        className={styles.customInput}                   />
+                    />
+                    {emailError && <p className={styles.error}>{emailError}</p>}
                     <TextInput
                         id="password"
                         label=""
@@ -48,11 +83,14 @@ const LogInForm = () => {
                         maxLength={175}
                         value={logInData.password}
                         onChange={handleInputChange}
-                        isPassword={true} 
+                        isPassword={true}
                     />
-                    <h3 className={styles.forgotPasswordLink}>¿Has olvidado tu contraseña?</h3>
+                    {passwordError && <p className={styles.error}>{passwordError}</p>}
+                    <h3 className={styles.forgotPasswordLink}>
+            ¿Has olvidado tu contraseña?
+                    </h3>
                 </section>
-                <ButtonSubmit  label="Iniciar sesión"  />
+                <ButtonSubmit label="Iniciar sesión" />
             </form>
         </div>
     );
