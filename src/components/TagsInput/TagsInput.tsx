@@ -4,7 +4,7 @@ import { TagsInputProps } from '@/app/interfaces/tagsInputProps';
 
 const TagsInputComponent = (props: TagsInputProps) => {
 
-    const { label } = props;
+    const { label, placeHolder, value, onChange } = props;
     
     return (
         <div className={styles.tagContainer}>
@@ -16,8 +16,9 @@ const TagsInputComponent = (props: TagsInputProps) => {
             <br />
             <div>
                 <TagsInput
-                    name="tags"
-                    placeHolder="Escribe tu etiqueta y pulsa enter"
+                    placeHolder={placeHolder}
+                    value={value}
+                    onChange={onChange}
                 />
             </div>
             

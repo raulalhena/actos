@@ -5,6 +5,6 @@ export interface TextInputProps {
     id: string;
     maxLength: number;
     minLength: number;
-    value: string;
+    value: string | undefined;
     onChange: (event: React.ChangeEvent<HTMLInputElement>) => void;
 }

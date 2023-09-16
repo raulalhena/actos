@@ -18,35 +18,37 @@ import ToggleSwitch from '../ToggleSwitch/ToggleSwitch';
 const EventForm = () => {
     const [ formData, setFormData ] = useState<EventFormProps>({
         name: '',
-        description: '',
-        tags: [],
-        category: '',
-        adress: '',
-        date: '',
-        startTime: '',
-        endTime: '',
-        timeZone: '',
+        // category: ;
+        // tags: [];
+        mode:'',
+        type:'',
+        // address: ;
+        // webLink: ;
+        date:'',
+        startTime:'',
+        endTime:'',
+        timeZone:'',
         showStartTime: true,
         showEndTime: true,
-        confirmed: false,
-        type: '',
-        mode: '',
-        image: '',
-        video: '',
-        qr: [],
-        attendees: [],
-        submitted: [],
-        capacity: 0, 
-        price: undefined,
-        payment: '',
-        contact: '',
-        language: undefined,
-        web: '',
-        visibility: false, 
-        status: false,
-        organizedBy: '',
-        address: '',
+        // confirmed: boolean,
+        description:'',
+        // web: ,
+        // organizedBy: ;
+        // contact: ,
+        isPrivate: false,
+        language: 'Español',
+        // image: ,
+        // video: ,
+        // capacity: number,
+        // qr: [],
+        // attendees: [],
+        // submitted: [],
+        // price: number,
+        // payment: ,
+        visibility: false,
+        status: false
     });
+
     //Visibility
     const [ isSection1Visible, setIsSection1Visible ] = useState(false);
     const [ isSection2Visible, setIsSection2Visible ] = useState(false);
@@ -68,6 +70,14 @@ const EventForm = () => {
         });
     };
     // Tags
+    // const handleTagsChange = (event: React.ChangeEvent<HTMLInputElement>) => {
+    //     const { id, value } = event.target;
+    //     console.log(event.target);
+    //     setFormData({
+    //         ...formData,
+    //         [id]: value,
+    //     });
+    // };
     const handleTagsChange = (newTags: string[]) => {
         setFormData({
             ...formData,
@@ -120,8 +130,7 @@ const EventForm = () => {
                                     value={formData.tags}
                                     label="Etiquetas"
                                     onChange={handleTagsChange}
-                                    name="tags"
-                                    placeHolder="tags"
+                                    placeHolder="Digite etiquetas y presione Enter"
                                 />
                             </div>
                             <div className={styles.formField}>
