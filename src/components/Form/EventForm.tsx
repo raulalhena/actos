@@ -121,7 +121,14 @@ const EventForm = () => {
                             placeHolder="Digite etiquetas y presione Enter"
                         />
                     </FormField>
+
                     <FormField>
+                        !! Modalidad!
+                    </FormField>
+                    
+                    <FormField>
+                        !! Colocar Componet para Lugar del evento!
+
                         <TextInput
                             id="address"
                             label="Añade una dirección"
@@ -144,6 +151,8 @@ const EventForm = () => {
                         />
                     </FormField>
                     <FormField>
+                        !! Colocar componente de FEcha confirmada
+                        !! Colocar componente fecha - calendario
                         <Select
                             id="timeZone"
                             label="Zona Horária"
@@ -185,6 +194,19 @@ const EventForm = () => {
                             value={formData.organizedBy}
                             onChange={handleInputChange}
                         />
+                        <TextInput
+                            id="contact"
+                            label="Información de contacto de los dinamizadores"
+                            placeholder="email@email.com"
+                            minLength={3}
+                            maxLength={75}
+                            value={formData.contact}
+                            onChange={handleInputChange}
+                        />
+                        <ToggleSwitch 
+                            id="contactInfo" 
+                            label="Mostrar públicamente la información de contacto." 
+                            subtitle="Si se desactiva, la información de contacto quedará oculta." />
                     </FormField>
                     <FormField>
                         <Select
@@ -195,6 +217,10 @@ const EventForm = () => {
                             onChange={handleSelectChange}
                         />
                     </FormField>
+                    <FormField>
+                        !!  Box - upload de imagen!!!
+                    </FormField>
+
                 </SectionForm>
 
                 <SectionForm 
@@ -202,9 +228,20 @@ const EventForm = () => {
                     isVisible={isSection3Visible} 
                     toggleVisibility={() => setIsSection3Visible(!isSection3Visible)}>
                     <FormField>
-                        <p>This is the content to show/hide.</p>
+                        <p> !! Colocar componente si Hay limite de entradas</p>
+                        <TextInputWithSubtitle
+                            id="capacity"
+                            label="Límite de entradas"
+                            subtitle="Escribe el número de entradas disponibles en caso de aforo limitado."
+                            placeholder=""
+                            minLength={3}
+                            maxLength={500}
+                            value={formData.capacity}
+                            onChange={handleInputChange}
+                        />
                     </FormField>
                 </SectionForm>
+                <p style={{ color: 'red' }}>* Rellena todos los campos obligatorios para poder publicar tu evento.</p>
 
                 <ButtonSubmit label="Guardar" />
 
