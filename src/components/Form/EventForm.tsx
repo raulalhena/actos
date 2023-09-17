@@ -24,34 +24,36 @@ import radioButtonsContainer from '@/data/radioButtons.json';
 // Form
 const EventForm = () => {
     const [ formData, setFormData ] = useState<EventFormProps>({
-        name: '',
-        description: '',
-        tags: [],
-        category: '',
-        address: '',
-        date: '',
-        startTime: '',
-        endTime: '',
-        timeZone: '',
+        event: '',
+        // category: ;
+        // tags: [];
+        mode:'',
+        type:'',
+        // address: ;
+        // webLink: ;
+        date:'',
+        startTime:'',
+        endTime:'',
+        timeZone:'',
         showStartTime: true,
         showEndTime: true,
-        confirmed: false,
-        type: '',
-        mode: '',
-        image: '',
-        video: '',
-        qr: [],
-        attendees: [],
-        submitted: [],
-        capacity: 0,
-        price: undefined,
-        payment: '',
-        contact: '',
-        language: '',
-        web: '',
+        // confirmed: boolean,
+        description:'',
+        // web: ,
+        // organizedBy: ;
+        // contact: ,
+        isPrivate: false,
+        language: 'Español',
+        // image: ,
+        // video: ,
+        // capacity: number,
+        // qr: [],
+        // attendees: [],
+        // submitted: [],
+        // price: number,
+        // payment: ,
         visibility: false,
-        status: false,
-        organizedBy: '',
+        status: false
     });
 
     //Visibility
@@ -115,13 +117,13 @@ const EventForm = () => {
                     toggleVisibility={() => setIsSection1Visible(!isSection1Visible)}>
 
                     <FormField>
-                        <TextInput
-                            id="event" 
-                            label="Nombre del evento*"
-                            placeholder="Evento"
+                    <TextInput
+                            id="event"
+                            label="Añade el nombre del evento"
+                            placeholder="Escribe el nombre de tu evento."
                             minLength={3}
-                            maxLength={120}
-                            value={formData.name}
+                            maxLength={75}
+                            value={formData.event}
                             onChange={handleInputChange}
                         />
                     </FormField>
@@ -256,7 +258,7 @@ const EventForm = () => {
                             label="Límite de entradas"
                             subtitle="Escribe el número de entradas disponibles en caso de aforo limitado."
                             placeholder=""
-                            minLength={3}
+                            minLength={0}
                             maxLength={500}
                             value={formData.capacity}
                             onChange={handleInputChange}
