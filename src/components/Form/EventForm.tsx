@@ -18,8 +18,6 @@ import ButtonCardRadio from '../Button/ButtonCardRadio';
 import RadioGroupContainer from '../ButtonContainer/RadioGroupContainer';
 import { ButtonCardRadioProps } from '@/app/interfaces/buttonCardRadioProps';
 import radioButtonsContainer from '@/data/radioButtons.json';
-import { TagsInput } from 'react-tag-input-component';
-import { ChevronDownIcon } from '../ChevronDownIcon/ChevronDownIcon';
 import timeZone from '@/data/timeZone.json';
 
 import 'react-date-picker/dist/DatePicker.css';
@@ -28,34 +26,36 @@ import DateInput from '../DateInput/DateInput';
 // Form
 const EventForm = () => {
     const [ formData, setFormData ] = useState<EventFormProps>({
-        name: '',
-        description: '',
-        tags: [],
-        category: '',
-        address: '',
-        date: '',
-        startTime: '',
-        endTime: '',
+        event: '',
+        // category: ;
+        // tags: [];
+        mode:'',
+        type:'',
+        // address: ;
+        // webLink: ;
+        date:'',
+        startTime:'',
+        endTime:'',
         timeZone:'',
         showStartTime: true,
         showEndTime: true,
-        confirmed: false,
-        type: '',
-        mode: '',
-        image: '',
-        video: '',
-        qr: [],
-        attendees: [],
-        submitted: [],
-        capacity: 0,
-        price: undefined,
-        payment: '',
-        contact: '',
-        language: '',
-        web: '',
+        // confirmed: boolean,
+        description:'',
+        // web: ,
+        // organizedBy: ;
+        // contact: ,
+        isPrivate: false,
+        language: 'Español',
+        // image: ,
+        // video: ,
+        // capacity: number,
+        // qr: [],
+        // attendees: [],
+        // submitted: [],
+        // price: number,
+        // payment: ,
         visibility: false,
-        status: false,
-        organizedBy: '',
+        status: false
     });
 
     //Visibility
@@ -120,7 +120,7 @@ const EventForm = () => {
 
     return (
         <div className={styles.form}>
-            <form onSubmit={handlesubmit}>
+            <form data-testid="event-form" onSubmit={handlesubmit}>
 
                 <SectionForm 
                     title="1 INFORMACIÓN BÁSICA" 
@@ -137,8 +137,8 @@ const EventForm = () => {
                             label="Nombre del evento*"
                             placeholder="Evento"
                             minLength={3}
-                            maxLength={120}
-                            value={formData.name}
+                            maxLength={75}
+                            value={formData.event}
                             onChange={handleInputChange}
                         />
                     </FormField>
@@ -274,7 +274,7 @@ const EventForm = () => {
                             label="Límite de entradas"
                             subtitle="Escribe el número de entradas disponibles en caso de aforo limitado."
                             placeholder=""
-                            minLength={3}
+                            minLength={0}
                             maxLength={500}
                             value={formData.capacity}
                             onChange={handleInputChange}
