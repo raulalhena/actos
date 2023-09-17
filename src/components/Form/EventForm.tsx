@@ -1,5 +1,5 @@
 'use client';
-import { ChangeEvent, useState } from 'react';
+import { useState } from 'react';
 import Select from '@/components/Select/Select';
 import TextInput from '@/components/TextInput/TextInput';
 import categories from '@/data/category.json';
@@ -19,8 +19,7 @@ import ButtonCardRadio from '../Button/ButtonCardRadio';
 import RadioGroupContainer from '../ButtonContainer/ButtonCardRadioContainer';
 import { ButtonCardRadioProps } from '@/app/interfaces/buttonCardRadioProps';
 import radioButtonsContainer from '@/data/radioButtons.json';
-import { TagsInput } from 'react-tag-input-component';
-import { ChevronDownIcon } from '../ChevronDownIcon/ChevronDownIcon';
+
 
 // Form
 const EventForm = () => {
