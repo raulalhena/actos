@@ -15,15 +15,16 @@ import FormField from '../FormField/FormField';
 import SectionForm from '../SectionForm/SectionForm';
 import { ImageUploader } from '../ImageUploader/ImageUploader';
 import ButtonCardRadio from '../Button/ButtonCardRadio';
-import RadioGroupContainer from '../ButtonContainer/ButtonCardRadioContainer';
+import RadioGroupContainer from '../ButtonContainer/RadioGroupContainer';
 import { ButtonCardRadioProps } from '@/app/interfaces/buttonCardRadioProps';
 import radioButtonsContainer from '@/data/radioButtons.json';
 import { TagsInput } from 'react-tag-input-component';
 import { ChevronDownIcon } from '../ChevronDownIcon/ChevronDownIcon';
-import DateInput from '../DateInput/DateInput';
-import DatePicker from 'react-date-picker';
+import timeZone from '@/data/timeZone.json';
+
 import 'react-date-picker/dist/DatePicker.css';
 import 'react-calendar/dist/Calendar.css';
+import DateInput from '../DateInput/DateInput';
 // Form
 const EventForm = () => {
     const [ formData, setFormData ] = useState<EventFormProps>({
@@ -35,7 +36,7 @@ const EventForm = () => {
         date: '',
         startTime: '',
         endTime: '',
-        timeZone: '',
+        timeZone:'',
         showStartTime: true,
         showEndTime: true,
         confirmed: false,
@@ -127,6 +128,10 @@ const EventForm = () => {
                     toggleVisibility={() => setIsSection1Visible(!isSection1Visible)}>
 
                     <FormField>
+                        <RadioGroupContainer 
+                            radioButtons={radioButtons} 
+                            selectedValue={selectedValue} 
+                            onChange={handleRadioChange} />
                         <TextInput
                             id="event" 
                             label="Nombre del evento*"
@@ -154,6 +159,7 @@ const EventForm = () => {
                             onChange={handleTagsChange}
                             placeHolder="Digite etiquetas y presione Enter"
                         />
+                        <DateInput id='date' name='date' value={formData.date} onChange={handleDateChange}/>
                     </FormField>
 
                     <FormField>
