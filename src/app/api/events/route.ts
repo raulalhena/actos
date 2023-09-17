@@ -12,8 +12,9 @@ export async function GET() {
 export async function POST(request: NextRequest) {
     await connectDB();
     const data = await request.json();
+    const newEvent = await Event.create(data);
     return NextResponse.json({
-        data: await Event.create(data),
+        data: newEvent,
         message: 'Event created.'
     }
 
