@@ -23,7 +23,6 @@ export const ImageUploader = () => {
     const handleDrop = e => {
         e.preventDefault();
         e.stopPropagation();
-        alert('drop');
         const file = e.dataTransfer.files[0];
         e.dataTransfer.clearData();
         console.log(file);
