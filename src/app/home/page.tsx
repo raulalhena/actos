@@ -1,10 +1,10 @@
 import React from 'react';
-// import './style.css';
+import styles from './page.module.css';
 
 const page = () => {
     return (
         <div>page
-            <button>Comprar</button>
+            <button className={styles.btnStyle}>Comprar</button>
         </div>
     );
 };
