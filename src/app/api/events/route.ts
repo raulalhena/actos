@@ -11,11 +11,18 @@ export async function GET() {
 
 export async function POST(request: NextRequest) {
     await connectDB();
-    return NextResponse.json(await Event.create({
-        attendees: [ new mongoose.Types.ObjectId('6504479ec27de5fc726cb06a') ],
-        name: 'Event3',
-        description: 'Event chachi',
-        date: Date.now()
-    }));
-    
+    const data = await request.json();
+    const newEvent = await Event.create(data);
+    return NextResponse.json({
+        data: newEvent,
+        message: 'Event created.'
+    }
+
+        // await Event.create({
+        //     attendees: [ new mongoose.Types.ObjectId('6504479ec27de5fc726cb06a') ],
+        //     name: 'Event3',
+        //     description: 'Event chachi',
+        //     date: Date.now(),
+        // })
+    );
 }
