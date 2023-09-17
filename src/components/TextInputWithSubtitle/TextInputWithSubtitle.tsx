@@ -1,7 +1,7 @@
-import { textInputWithSubtitleProps } from '@/app/interfaces/textInputWithSubtitleProps';
+import { TextInputWithSubtitleProps } from '@/app/interfaces/textInputWithSubtitleProps';
 import styles from './TextInputWithSubtitle.module.css';
 
-function TextInputWithSubtitle(props: textInputWithSubtitleProps) {
+function TextInputWithSubtitle(props: TextInputWithSubtitleProps) {
     const { label, subtitle, placeholder, id, maxLength, minLength, value, onChange } = props;
 
     return (

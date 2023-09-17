@@ -7,4 +7,6 @@ export interface TextInputProps {
     minLength: number;
     value: string | undefined;
     onChange: (event: React.ChangeEvent<HTMLInputElement>) => void;
+    className?: string; 
+    isPassword?: boolean;
 }

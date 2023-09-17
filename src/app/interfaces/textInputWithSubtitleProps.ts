@@ -1,4 +1,4 @@
-export interface textInputWithSubtitleProps {
+export interface TextInputWithSubtitleProps {
     label: string;
     subtitle: string;
     placeholder: string;
