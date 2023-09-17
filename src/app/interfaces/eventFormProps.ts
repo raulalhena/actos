@@ -17,7 +17,7 @@ export interface EventFormProps  {
     web?: string,
     organizedBy?: string;
     contact?: string,
-    isPrivate: boolean;
+    isPrivate?: boolean;
     language: string;
     image?: string,
     video?: string,
