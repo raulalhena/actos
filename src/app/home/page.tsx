@@ -1,11 +1,10 @@
 import React from 'react';
-import { btnMedium, btnSmall, radius } from '@/styles/globals';
-import './style.css';
+import styles from './page.module.css';
 
 const page = () => {
     return (
         <div>page
-            <button className='btnRound btnRed'>Comprar</button>
+            <button className={styles.btnStyle}>Comprar</button>
         </div>
     );
 };

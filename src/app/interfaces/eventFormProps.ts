@@ -1,5 +1,5 @@
 export interface EventFormProps  {
-    name: string,
+    event: string,
     category?: string;
     tags?: string[];
     mode: string,
@@ -9,7 +9,7 @@ export interface EventFormProps  {
     date: string,
     startTime: string,
     endTime: string,
-    timeZone?: string,
+    timeZone: string,
     showStartTime?: boolean,
     showEndTime?: boolean,
     confirmed?: boolean,
