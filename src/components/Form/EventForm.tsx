@@ -14,6 +14,7 @@ import TagsInputComponent from '../TagsInput/TagsInput';
 import ToggleSwitch from '../ToggleSwitch/ToggleSwitch';
 import FormField from '../FormField/FormField';
 import SectionForm from '../SectionForm/SectionForm';
+import { ImageUploader } from '../ImageUploader/ImageUploader';
 
 // Form
 const EventForm = () => {
@@ -218,7 +219,7 @@ const EventForm = () => {
                         />
                     </FormField>
                     <FormField>
-                        !!  Box - upload de imagen!!!
+                        <ImageUploader />
                     </FormField>
 
                 </SectionForm>
