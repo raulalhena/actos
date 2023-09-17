@@ -4,7 +4,6 @@ import Select from '@/components/Select/Select';
 import TextInput from '@/components/TextInput/TextInput';
 import categories from '@/data/category.json';
 import languages from '@/data/languages.json';
-import timeZone from '@/data/timeZone.json';
 import ButtonSubmit from '../Button/ButtonSubmit';
 import { EventFormProps } from '@/app/interfaces/eventFormProps';
 import styles from './EventForm.module.css';
@@ -21,7 +20,10 @@ import { ButtonCardRadioProps } from '@/app/interfaces/buttonCardRadioProps';
 import radioButtonsContainer from '@/data/radioButtons.json';
 import { TagsInput } from 'react-tag-input-component';
 import { ChevronDownIcon } from '../ChevronDownIcon/ChevronDownIcon';
-
+import DateInput from '../DateInput/DateInput';
+import DatePicker from 'react-date-picker';
+import 'react-date-picker/dist/DatePicker.css';
+import 'react-calendar/dist/Calendar.css';
 // Form
 const EventForm = () => {
     const [ formData, setFormData ] = useState<EventFormProps>({
@@ -82,6 +84,15 @@ const EventForm = () => {
             tags: newTags,
         });
     };
+
+    // DateInput
+    const handleDateChange = (e: ChangeEvent<HTMLInputElement>) => {
+        setFormData({
+            ...formData,
+            date: e.target.value,
+        });
+    };
+
     // Submit Button
     const handlesubmit = (event: React.FormEvent) => {
         event.preventDefault();
