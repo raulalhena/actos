@@ -2,7 +2,7 @@ export interface EventFormProps  {
     category?: string | undefined;
     tags?: string[] | undefined;
     address: string | undefined;
-    webLink: string | undefined;
+    webLink?: string | undefined;
     organizedBy: string;
     language: string | undefined;
     event: string | undefined;
