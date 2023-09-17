@@ -1,5 +1,5 @@
 'use client';
-import { useState } from 'react';
+import { ChangeEvent, useState } from 'react';
 import Select from '@/components/Select/Select';
 import TextInput from '@/components/TextInput/TextInput';
 import categories from '@/data/category.json';
@@ -14,40 +14,45 @@ import TagsInputComponent from '../TagsInput/TagsInput';
 import ToggleSwitch from '../ToggleSwitch/ToggleSwitch';
 import FormField from '../FormField/FormField';
 import SectionForm from '../SectionForm/SectionForm';
+import { ImageUploader } from '../ImageUploader/ImageUploader';
+import ButtonCardRadio from '../Button/ButtonCardRadio';
+import RadioGroupContainer from '../ButtonContainer/ButtonCardRadioContainer';
+import { ButtonCardRadioProps } from '@/app/interfaces/buttonCardRadioProps';
+import radioButtonsContainer from '@/data/radioButtons.json';
+import { TagsInput } from 'react-tag-input-component';
+import { ChevronDownIcon } from '../ChevronDownIcon/ChevronDownIcon';
 
 // Form
 const EventForm = () => {
     const [ formData, setFormData ] = useState<EventFormProps>({
         name: '',
-        // category: ;
-        // tags: [];
-        mode:'',
-        type:'',
-        // address: ;
-        // webLink: ;
-        date:'',
-        startTime:'',
-        endTime:'',
-        timeZone:'',
+        description: '',
+        tags: [],
+        category: '',
+        address: '',
+        date: '',
+        startTime: '',
+        endTime: '',
+        timeZone: '',
         showStartTime: true,
         showEndTime: true,
-        // confirmed: boolean,
-        description:'',
-        // web: ,
-        // organizedBy: ;
-        // contact: ,
-        isPrivate: false,
-        language: 'Español',
-        // image: ,
-        // video: ,
-        // capacity: number,
-        // qr: [],
-        // attendees: [],
-        // submitted: [],
-        // price: number,
-        // payment: ,
+        confirmed: false,
+        type: '',
+        mode: '',
+        image: '',
+        video: '',
+        qr: [],
+        attendees: [],
+        submitted: [],
+        capacity: 0,
+        price: undefined,
+        payment: '',
+        contact: '',
+        language: '',
+        web: '',
         visibility: false,
-        status: false
+        status: false,
+        organizedBy: '',
     });
 
     //Visibility
@@ -82,6 +87,24 @@ const EventForm = () => {
         event.preventDefault();
         console.log(formData);
     };
+
+    // Button Radio
+
+    const [ selectedValue, setSelectedValue ] = useState<string>('');
+
+    const handleRadioChange = (value: string) => {
+        setSelectedValue(value);
+        setFormData({
+            ...formData,
+            type: value,
+        });
+    };
+    // Radio Group
+    const radioButtons: ButtonCardRadioProps[] = radioButtonsContainer.map((container) => ({
+        ...container,
+        checked: selectedValue === container.value,
+        onChange: () => handleRadioChange(container.value),
+    })); 
 
     return (
         <div className={styles.form}>
@@ -218,7 +241,7 @@ const EventForm = () => {
                         />
                     </FormField>
                     <FormField>
-                        !!  Box - upload de imagen!!!
+                        <ImageUploader />
                     </FormField>
 
                 </SectionForm>

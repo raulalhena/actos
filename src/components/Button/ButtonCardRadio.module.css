@@ -1,0 +1,16 @@
+.radioButton {
+    cursor: pointer;  
+}
+.cardButton{
+    border-radius: 12px;
+    border: 1.5px solid #E15A40;
+    background: #FFF;
+    cursor: pointer;
+    width: 5em;
+    height: 5em;
+    display: block;
+    z-index: 50;
+}
+
+
+
