@@ -12,6 +12,25 @@ export async function GET(request: NextRequest, { params }: {params: {id: number
 
 }
 
-export function POST(){}
+export async function DELETE(request: NextRequest, { params }: {params: {id: number}}) {
+    await dbConnect();
+    await Event.findByIdAndDelete({ _id: params.id });
 
-export function DELETE(){}
+    return NextResponse.json({
+        message: 'Event deleted.'
+    });
+}
+
+export async function PUT(request: NextRequest, { params }: {params: {id: number}}) {
+    await dbConnect();
+
+    const data = await request.json();
+    const event = await Event.findByIdAndUpdate({ _id: params.id }, data, { new: true });
+
+    return NextResponse.json(
+        {
+            data: event,
+            message: 'Event updated.'
+        }
+    );
+}
