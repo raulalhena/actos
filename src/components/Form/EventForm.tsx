@@ -4,22 +4,20 @@ import Select from '@/components/Select/Select';
 import TextInput from '@/components/TextInput/TextInput';
 import categories from '@/data/category.json';
 import languages from '@/data/languages.json';
-import timeZone from '@/data/timeZone.json';
 import ButtonSubmit from '../Button/ButtonSubmit';
 import { EventFormProps } from '@/app/interfaces/eventFormProps';
 import styles from './EventForm.module.css';
 import { TextArea } from '../TextArea/TextArea';
 import TextInputWithSubtitle from '../TextInputWithSubtitle/TextInputWithSubtitle';
-import TagsInputComponent from '../TagsInput/TagsInput';
-import ToggleSwitch from '../ToggleSwitch/ToggleSwitch';
-import FormField from '../FormField/FormField';
-import SectionForm from '../SectionForm/SectionForm';
-import ButtonCardRadio from '../Button/ButtonCardRadio';
 import RadioGroupContainer from '../ButtonContainer/ButtonCardRadioContainer';
 import { ButtonCardRadioProps } from '@/app/interfaces/buttonCardRadioProps';
 import radioButtonsContainer from '@/data/radioButtons.json';
 import { TagsInput } from 'react-tag-input-component';
 import { ChevronDownIcon } from '../ChevronDownIcon/ChevronDownIcon';
+import DateInput from '../DateInput/DateInput';
+import DatePicker from 'react-date-picker';
+import 'react-date-picker/dist/DatePicker.css';
+import 'react-calendar/dist/Calendar.css';
 // Form
 const EventForm = () => {
     const [ formData, setFormData ] = useState<EventFormProps>({
@@ -80,6 +78,15 @@ const EventForm = () => {
             tags: newTags,
         });
     };
+
+    // DateInput
+    const handleDateChange = (e: ChangeEvent<HTMLInputElement>) => {
+        setFormData({
+            ...formData,
+            date: e.target.value,
+        });
+    };
+
     // Submit Button
     const handlesubmit = (event: React.FormEvent) => {
         event.preventDefault();
@@ -121,7 +128,7 @@ const EventForm = () => {
                             <section>
                                 <div className={styles.formField}>
                                     <TextInput
-                                        id="event"
+                                        id="name"
                                         label="Nombre del evento*"
                                         placeholder="Evento"
                                         minLength={3}
@@ -132,7 +139,7 @@ const EventForm = () => {
                                 </div>
                                 <div className={styles.formField}>
                                     <Select
-                                        id="categoryEvent"
+                                        id="category"
                                         label="Categoría"
                                         options={categories}
                                         value={formData.category}
@@ -149,7 +156,7 @@ const EventForm = () => {
                                 </div>
                                 <div className={styles.formField}>
                                     <TextInput
-                                        id="direction"
+                                        id="address"
                                         label="Añade una dirección"
                                         placeholder="Escribe la dirección de tu evento."
                                         minLength={3}
@@ -160,13 +167,21 @@ const EventForm = () => {
                                 </div>
                                 <div className={styles.formField}>
                                     <TextInput
-                                        id="webLink"
+                                        id="web"
                                         label="Añade un enlace"
                                         placeholder="Escribe el enlace de tu evento."
                                         minLength={3}
                                         maxLength={75}
                                         value={formData.webLink}
                                         onChange={handleInputChange}
+                                    />
+                                </div>
+                                <div className={styles.formField}>
+                                    <DateInput
+                                        id='date' 
+                                        name='date'  
+                                        value={formData.date}  
+                                        onChange={handleDateChange} 
                                     />
                                 </div>
                             </section>
@@ -182,12 +197,13 @@ const EventForm = () => {
                             </div>
                         </section>
                         {isSection2Visible && <section>
+                            <RadioGroupContainer
+                                radioButtons={radioButtons}
+                                selectedValue={selectedValue}
+                                onChange={handleRadioChange}
+                            />
                             <div className={styles.formField}>
-                                <RadioGroupContainer
-                                    radioButtons={radioButtons}
-                                    selectedValue={selectedValue}
-                                    onChange={handleRadioChange}
-                                />
+                                
                                 <TextArea
                                     id="description"
                                     label="Descripción del evento *"
@@ -212,7 +228,7 @@ const EventForm = () => {
                             </div>
                             <div className={styles.formField}>
                                 <Select
-                                    id="languageEvent"
+                                    id="language"
                                     label="Idioma del evento"
                                     options={languages}
                                     value={formData.language}
