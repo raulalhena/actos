@@ -1,7 +1,10 @@
 import React from 'react';
-import Page from '../src/app/home/page';
-import { render, screen } from '@testing-library/react';
 import '@testing-library/jest-dom/extend-expect';
+
+import Page from '@/app/home/page';
+import { render, screen } from '@testing-library/react';
+
+
 
 describe('Page Component', () => {
   test('renders the "page" text correctly', () => {

@@ -1,10 +1,10 @@
 import React from 'react';
-
-import { render, screen } from '@testing-library/react';
-import ButtonSubmit from '../src/components/Button/ButtonSubmit';
 import '@testing-library/jest-dom/extend-expect';
 
-test('Renderiza el componente ButtonSubmit corretamente', () => {
+import { render, screen } from '@testing-library/react';
+import ButtonSubmit from '@/components/Button/ButtonSubmit';
+
+test('Renders ButtonSubmit component', () => {
     render(<ButtonSubmit label="Enviar" />);
 
     const buttonElement = screen.getByText(/Enviar/i);

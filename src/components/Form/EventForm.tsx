@@ -85,7 +85,7 @@ const EventForm = () => {
 
     return (
         <div className={styles.form}>
-            <form onSubmit={handlesubmit}>
+            <form data-testid="event-form" onSubmit={handlesubmit}>
 
                 <SectionForm 
                     title="1 INFORMACIÓN BÁSICA" 
