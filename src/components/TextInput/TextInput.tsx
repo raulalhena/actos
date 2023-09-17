@@ -2,26 +2,26 @@ import { TextInputProps } from '@/app/interfaces/textInputProps';
 import styles from './TextInput.module.css';
 
 function TextInput(props: TextInputProps) {
-    const { label, placeholder, id, maxLength, minLength, value, onChange } = props;
+    const { label, placeholder, id, maxLength, minLength, value, isPassword, onChange } =
+    props;
 
     return (
-        
         <div>
-            <label className={styles.label}
-                htmlFor={id}>{label}
+            <label className={styles.label} htmlFor={id}>
+                {label}
             </label>
             <br />
-            <input 
-                type="text" 
-                id={id} 
+            <input
+                type={isPassword ? 'password' : 'text'}
+                id={id}
                 placeholder={placeholder}
-                minLength={minLength} 
+                minLength={minLength}
                 maxLength={maxLength}
                 value={value}
                 onChange={onChange}
-                className={styles.input}            />
+                className={styles.input}
+            />
         </div>
-        
     );
 }
 

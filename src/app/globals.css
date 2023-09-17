@@ -1,3 +1,6 @@
+.page {
+}
+
 h1 {
   color: #1c2e48;
   font-size: 30pt;
@@ -15,6 +18,13 @@ h2 {
     font-size: 15pt;
     font-weight: 500;
 }
+
+h3 {
+  color: #1c2e48;
+  font-size: 12pt;
+  font-weight: 600;
+}
+
 
 /* Para pantallas más grandes o iguales a 768px (md) */
 @media screen and (min-width: 768px) {
