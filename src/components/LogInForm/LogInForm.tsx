@@ -1,10 +1,17 @@
+'use client';
+
 import React, { useState } from 'react';
 import TextInput from '@/components/TextInput/TextInput';
 import styles from './LogInForm.module.css';
 import ButtonSubmit from '@/components/Button/ButtonSubmit';
 import { LogInProps } from '@/app/interfaces/logInProps';
+import { NextResponse } from 'next/server';
+import { useRouter } from 'next/navigation';
+import { signIn } from 'next-auth/react';
 
 const LogInForm = () => {
+    const router = useRouter();
+
     const [ logInData, setLogInData ] = useState<LogInProps>({
         email: '',
         password: '',
@@ -18,6 +25,7 @@ const LogInForm = () => {
             [id]: value,
         });
     };
+    const [ loginError, setLoginError ] = useState('');
 
     const handleSubmit = (event: React.FormEvent) => {
         event.preventDefault();
@@ -38,9 +46,22 @@ const LogInForm = () => {
             setEmailError('El email no tiene un formato válido.');
         } else {
             setEmailError(null);
-            console.log(logInData);
         }
+
+        requestLogin();
     };
+
+    const requestLogin = async () => {
+        const res = await signIn('credentials', {
+            email: logInData.email,
+            password: logInData.password,
+            redirect: false
+        });
+
+        if(res?.error) return setLoginError(res.error as string);
+
+        if(res?.ok) return router.push('/event')
+    }
 
     // Function to validate password
     const validatePassword = (password: string) => {

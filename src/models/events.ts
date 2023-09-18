@@ -5,18 +5,18 @@ const eventSchema = new Schema (
     {
         name: {
             type: String,
-            require: true
+            require: [ true, 'El nombre del evento es requerido' ]
         },
         description: {
             type: String,
-            require: true
+            require: [ true, 'La descripción del evento es requerida' ]
         },
         tags: String,
         category: String,
         adress: String,
         date: {
             type: Date,
-            require: true
+            require: [ true, 'La fecha del evento es requerida' ]
         },
         startTime: Date,
         endTime: Date,
