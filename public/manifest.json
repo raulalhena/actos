@@ -1,14 +1,10 @@
 {
     "name": "ACTOS",
     "short_name": "ACTOS",
-    "icons": {
-        "src": "",
-        "sizes": "",
-        "type": ""
-    },
-    "theme_color": "",
-    "background_color": "",
-    "start_url": "/",
+    "theme_color": "#2196f3",
+    "background_color": "#2196f3",
     "display": "standalone",
-    "orientation": "portrait"
-}
+    "orientation": "portrait",
+    "scope": "/",
+    "start_url": "/"
+  }

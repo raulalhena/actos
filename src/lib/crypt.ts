@@ -1,6 +1,6 @@
 import bcrypt from 'bcrypt';
 
-export async function encryptPassword(password: String) {
+export async function encryptPassword(password: unknown) {
     const saltRounds = 10;
     try {
         const salt = await bcrypt.genSalt(saltRounds)

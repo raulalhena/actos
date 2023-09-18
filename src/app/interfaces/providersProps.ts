@@ -1,3 +1,5 @@
+import React from 'react';
+
 export interface ProvidersProps {
-    children: React.node;
+    children: React.ReactNode;
 }

@@ -7,9 +7,7 @@ import { useSession } from 'next-auth/react';
 const page = () => {
 
     const { data: session, status } = useSession();
-
-    console.log(session, status);
-
+    
     return (
         <>
             <section className={styles.title}>

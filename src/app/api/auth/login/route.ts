@@ -9,7 +9,6 @@ export function GET() {
     });
 }
 
-
 export async function POST(req: NextRequest) {
     try {
         const { email, password } = await req.json();
@@ -18,7 +17,7 @@ export async function POST(req: NextRequest) {
 
         const user = await User.findOne({ email: email });
         console.log(user)
-        const isValidPassword = await validatePassword(password, await encryptPassword(password));
+        const isValidPassword = await validatePassword(password, encryptPassword(password));
 
         if(!user) throw new Error('Credenciales incorrectas.');
         return NextResponse.json(user);

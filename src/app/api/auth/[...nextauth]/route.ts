@@ -19,7 +19,7 @@ const handler = NextAuth( {
                     const user = await User.findOne({ email: credentials?.email }).select('+password');
                     if(!user) throw new Error('Credenciales incorrectas.');
 
-                    const isValidPassword = await validatePassword(credentials?.password, user.password);
+                    const isValidPassword = await validatePassword(String(credentials?.password), user.password);
                     
                     if(!isValidPassword) throw new Error('Credenciales incorrectas.');
 

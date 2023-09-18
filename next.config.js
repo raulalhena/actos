@@ -1,16 +1,12 @@
 /** @type {import('next').NextConfig} */
-const nextConfig = {
-    experimental: {
-        esmExternals: 'loose',
-        serverComponentsExternalPackages: [ 'mongoose' ] 
-    },
-    webpack(config) {
-        config.experiments = { ...config.experiments, topLevelAwait: true };
-        return config;
-    },
-    headers: {
-        'Content-Type': 'application/json'
-    }
-};
+const withPWA = require("next-pwa");
+
+const nextConfig = {};
+
+module.exports = withPWA({
+    dest: "public",
+    register: true,
+    skipWaiting: true
+});
 
 module.exports = nextConfig;

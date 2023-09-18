@@ -10,17 +10,17 @@ export const ImageUploader = () => {
     const [ previewURL, setPreviewURL ] = useState('http://localhost:5000/public/next.svg');
     const [ imgVisibility, setImgVisibility ] = useState('none');
 
-    const handleFile = file => {
+    const handleFile = (file: any) => {
         setBgImage(file);
         setPreviewURL(URL.createObjectURL(file));
         setImgVisibility('block');
     };
     
-    const handleDragOver = e => {
+    const handleDragOver = (e: React.DragEvent<HTMLDivElement>) => {
         e.preventDefault();
         e.stopPropagation();
     };
-    const handleDrop = e => {
+    const handleDrop = (e: React.DragEvent<HTMLDivElement>) => {
         e.preventDefault();
         e.stopPropagation();
         const file = e.dataTransfer.files[0];
@@ -29,25 +29,26 @@ export const ImageUploader = () => {
         handleFile(file);
     };
 
-    const handleSubmit = e => {
-        e.preventDefault();
-        const url = 'http://localhost:5000/uploadFile';
-        const formData = new FormData();
-        formData.append('file', file);
-        formData.append('fileName', file.name);
-        const config = {
-            headers: {
-                'content-type': 'multipart/form-data',
-            },
-        };
-        // Envío de fichero de imagen al backend para almacenarlo
-        // const resp = await fetch('http://localhost:5000/api/events, method: 'POST')
-        // const data = await resp.json();
-        // setPreviewURL(data.fileUrl);
+    // const handleSubmit = (e: SubmitEvent) => {
+    //     e.preventDefault();
+    //     const url = 'http://localhost:5000/uploadFile';
+    //     const formData = new FormData();
+    //     formData.append('file', file);
+    //     formData.append('fileName', file.name);
+    //     const config = {
+    //         headers: {
+    //             'content-type': 'multipart/form-data',
+    //         },
+    //     };
+    //     console.log(file);
+    //     // Envío de fichero de imagen al backend para almacenarlo
+    //     // const resp = await fetch('http://localhost:5000/api/events, method: 'POST')
+    //     // const data = await resp.json();
+    //     // setPreviewURL(data.fileUrl);
 
-    };
+    // };
 
-    const removeImage = e => {
+    const removeImage = (e: React.MouseEvent<HTMLElement>) => {
         e.preventDefault();
         setBgImage(null);
         setPreviewURL('');
