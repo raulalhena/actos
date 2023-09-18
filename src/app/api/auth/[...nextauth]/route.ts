@@ -1,5 +1,5 @@
 import NextAuth from 'next-auth';
-import CredentialsProvider from "next-auth/providers/credentials";
+import CredentialsProvider from 'next-auth/providers/credentials';
 import dbConnect from '@/lib/mongodb';
 import User from '@/models/users';
 import { validatePassword } from '@/lib/crypt';
@@ -9,7 +9,7 @@ const handler = NextAuth( {
         CredentialsProvider({
             name: 'credentials',
             credentials: {
-                email: { label: "Email", type: "text" },
+                email: { label: 'Email', type: 'text' },
                 password: { lable: 'Password', type: 'password' }
             },
             async authorize(credentials, req) {
