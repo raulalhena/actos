@@ -1,3 +1,3 @@
-export interface ButtonSubmitProps {
+export interface ButtonProps {
     label: string;
 }

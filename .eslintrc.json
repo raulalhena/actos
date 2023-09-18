@@ -1,5 +1,8 @@
 {
-  "extends": ["eslint-config-next"],
+  "extends": [
+    "eslint-config-next",
+    "plugin:testing-library/react"
+  ],
   "parser": "@typescript-eslint/parser",
   "plugins": ["@typescript-eslint"],
   "rules": {
@@ -43,8 +46,15 @@
       "error",
       "smart-tabs"
     ],
-    "array-bracket-newline": ["error", "consistent"],
-    "camelcase": ["error", { "properties": "never" }],
+    "array-bracket-newline": [
+      "error", "consistent"
+    ],
+    "camelcase": [
+      "error", 
+      { 
+        "properties": "never" 
+      }
+    ],
     "prefer-arrow-callback": "error"
   }
 }

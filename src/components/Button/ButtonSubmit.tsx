@@ -1,10 +1,11 @@
-import { ButtonSubmitProps } from '@/app/interfaces/buttonProps';
+import { ButtonProps } from '@/app/interfaces/buttonProps';
 import styles from './ButtonSubmit.module.css';
 
-const ButtonSubmit = ({ label }: ButtonSubmitProps) => {
+const ButtonSubmit = ({ label }: ButtonProps) => {
+    
     return (
         <div className={styles.container}>
-            <button className={styles.button} type="submit">
+            <button className={styles.buttonStyle} type="submit">
                 {label}
             </button>
         </div>
