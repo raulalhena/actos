@@ -186,7 +186,7 @@ const EventForm = () => {
                                 placeholder="Escribe el link de acceso a tu evento."
                                 minLength={3}
                                 maxLength={75}
-                                value={formData.onlineLink}
+                                value={formData.webLink}
                                 onChange={handleInputChange}
                             />
                         )}
@@ -207,7 +207,7 @@ const EventForm = () => {
                                     placeholder="Escribe el link de acceso a tu evento."
                                     minLength={3}
                                     maxLength={75}
-                                    value={formData.onlineLink}
+                                    value={formData.webLink}
                                     onChange={handleInputChange}
                                 />
                             </>
