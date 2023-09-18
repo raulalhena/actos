@@ -22,6 +22,7 @@ import timeZone from '@/data/timeZone.json';
 import 'react-date-picker/dist/DatePicker.css';
 import 'react-calendar/dist/Calendar.css';
 import DateInput from '../DateInput/DateInput';
+import axios from 'axios';
 
 // Form
 const EventForm = () => {
@@ -100,7 +101,7 @@ const EventForm = () => {
     // Submit Button
     const handleSubmit = (event: React.FormEvent) => {
         event.preventDefault();
-        console.log(formData);
+        axios.post('localhost:5000/api/events', formData)
     };
 
     // Button Radio
