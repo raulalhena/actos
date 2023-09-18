@@ -1,6 +1,6 @@
 'use client';
 
-import EventForm from '@/components/Form/EventForm';
+import EventForm from '@/components/EventForm/EventForm';
 import styles from './event.module.css';
 import { useSession } from 'next-auth/react';
 
