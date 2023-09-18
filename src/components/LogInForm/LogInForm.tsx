@@ -31,14 +31,14 @@ const LogInForm = () => {
         event.preventDefault();
 
         // Validate password
-        // const isValidPassword = validatePassword(logInData.password);
-        // if (!isValidPassword) {
-        //     setPasswordError(
-        //         'La contraseña debe tener al menos una mayúscula, un número y un carácter especial.'
-        //     );
-        // } else {
-        //     setPasswordError(null);
-        // }
+        const isValidPassword = validatePassword(logInData.password);
+        if (!isValidPassword) {
+            setPasswordError(
+                'La contraseña debe tener al menos una mayúscula, un número y un carácter especial.'
+            );
+        } else {
+            setPasswordError(null);
+        }
 
         // Validate email
         const isValidEmail = validateEmail(logInData.email);
@@ -52,21 +52,6 @@ const LogInForm = () => {
     };
 
     const requestLogin = async () => {
-        // try{
-        //     const resp = await fetch('http://localhost:5000/api/auth/login', {
-        //         method: 'POST',
-        //         headers: {
-        //             'Content-Type': 'application/json'
-        //         },
-        //         body: JSON.stringify(logInData)
-        //     });
-        // }catch(error) {
-        //     if(error instanceof Error) {
-        //         return NextResponse.json({
-        //             message: error.message
-        //         });
-        //     }
-        // }
         const res = await signIn('credentials', {
             email: logInData.email,
             password: logInData.password,
@@ -79,11 +64,11 @@ const LogInForm = () => {
     }
 
     // Function to validate password
-    // const validatePassword = (password: string) => {
-    //     const passwordRegex =
-    //   /^(?=.*[A-Z])(?=.*\d)(?=.*[@$!%*?&])[A-Za-z\d@$!%*?&]+$/;
-    //     return passwordRegex.test(password);
-    // };
+    const validatePassword = (password: string) => {
+        const passwordRegex =
+      /^(?=.*[A-Z])(?=.*\d)(?=.*[@$!%*?&])[A-Za-z\d@$!%*?&]+$/;
+        return passwordRegex.test(password);
+    };
 
     // Function to validate email
     const validateEmail = (email: string) => {
@@ -120,7 +105,7 @@ const LogInForm = () => {
                         onChange={handleInputChange}
                         isPassword={true}
                     />
-                    {/* {passwordError && <p className={styles.error}>{passwordError}</p>} */}
+                    {passwordError && <p className={styles.error}>{passwordError}</p>}
                     <h3 className={styles.forgotPasswordLink}>
             ¿Has olvidado tu contraseña?
                     </h3>
