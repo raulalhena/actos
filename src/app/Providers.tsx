@@ -9,7 +9,7 @@ function Providers({ children }: ProvidersProps) {
         <SessionProvider>
             {children}
         </SessionProvider>
-    )
+    );
 }
 
 export default Providers;

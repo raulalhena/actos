@@ -37,13 +37,13 @@ const SignupForm = () => {
             setNameError(null);
         }
 
-         // Validate surname
-         const isValidSurname = validateSurname(signupData.surname);
-         if(!isValidSurname) {
-             setSurnameError('El apellido no puede estar en blanco, contener números o ser menor de 2 carácteres');
-         } else {
-             setSurnameError(null);
-         }
+        // Validate surname
+        const isValidSurname = validateSurname(signupData.surname);
+        if(!isValidSurname) {
+            setSurnameError('El apellido no puede estar en blanco, contener números o ser menor de 2 carácteres');
+        } else {
+            setSurnameError(null);
+        }
 
         // Validate password
         const isValidPassword = validatePassword(signupData.password);
@@ -69,13 +69,13 @@ const SignupForm = () => {
     const validateName = (name: string) => {
         const nameRegex = /(.*[a-z]){2}/i;
         return nameRegex.test(name);
-    }
+    };
 
     // Function to validate surname
     const validateSurname = (surname: string) => {
         const surnameRegex = /(.*[a-z]){2}/i;
         return surnameRegex.test(surname);
-    }
+    };
 
     // Function to validate password
     const validatePassword = (password: string) => {

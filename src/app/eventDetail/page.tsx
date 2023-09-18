@@ -6,6 +6,7 @@ import { useSession } from 'next-auth/react';
 
 const page = () => {
 
+    // eslint-disable-next-line react-hooks/rules-of-hooks
     const { data: session, status } = useSession();
 
     return (

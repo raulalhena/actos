@@ -17,7 +17,9 @@ const authors: Array<Author> = [
 export const metadata: Metadata = {
     title: 'ACTOS',
     description: 'Crea y gestiona tus eventos de forma molona! yeahh!',
-    authors
+    authors,
+    manifest: '/manifest.json',
+    themeColor: '#000'
 };
 
 export default function RootLayout({

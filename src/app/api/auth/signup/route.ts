@@ -1,7 +1,7 @@
-import { NextResponse, NextRequest } from "next/server";
-import dbConnect from "@/lib/mongodb";
-import User from "@/models/users";
-import { encryptPassword } from "@/lib/crypt";
+import { NextResponse, NextRequest } from 'next/server';
+import dbConnect from '@/lib/mongodb';
+import User from '@/models/users';
+import { encryptPassword } from '@/lib/crypt';
 
 export async function POST(req: NextRequest) {
     const { name, email, surname, password } = await req.json();

@@ -1,7 +1,7 @@
-import { validatePassword, encryptPassword } from "@/lib/crypt";
-import dbConnect from "@/lib/mongodb";
-import User from "@/models/users";
-import { NextRequest, NextResponse } from "next/server";
+import { validatePassword, encryptPassword } from '@/lib/crypt';
+import dbConnect from '@/lib/mongodb';
+import User from '@/models/users';
+import { NextRequest, NextResponse } from 'next/server';
 
 export function GET() {
     return NextResponse.json({
@@ -16,8 +16,8 @@ export async function POST(req: NextRequest) {
         await dbConnect();
 
         const user = await User.findOne({ email: email });
-        console.log(user)
-        const isValidPassword = await validatePassword(password, encryptPassword(password));
+        console.log(user);
+        const isValidPassword = await validatePassword(password, await encryptPassword(password));
 
         if(!user) throw new Error('Credenciales incorrectas.');
         return NextResponse.json(user);
