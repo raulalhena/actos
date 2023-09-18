@@ -13,7 +13,7 @@ export async function encryptPassword(password: String) {
     }
 }
 
-export async function checkPassword(password: String, hash: String) {
+export async function validatePassword(password: String, hash: String) {
     try{
         return bcrypt.compare(password, hash);
     }catch (error) {

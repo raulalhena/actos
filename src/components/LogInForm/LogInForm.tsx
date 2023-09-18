@@ -1,10 +1,17 @@
+'use client';
+
 import React, { useState } from 'react';
 import TextInput from '@/components/TextInput/TextInput';
 import styles from './LogInForm.module.css';
 import ButtonSubmit from '@/components/Button/ButtonSubmit';
 import { LogInProps } from '@/app/interfaces/logInProps';
+import { NextResponse } from 'next/server';
+import { useRouter } from 'next/navigation';
+import { signIn } from 'next-auth/react';
 
 const LogInForm = () => {
+    const router = useRouter();
+
     const [ logInData, setLogInData ] = useState<LogInProps>({
         email: '',
         password: '',
@@ -18,19 +25,20 @@ const LogInForm = () => {
             [id]: value,
         });
     };
+    const [ loginError, setLoginError ] = useState('');
 
     const handleSubmit = (event: React.FormEvent) => {
         event.preventDefault();
 
         // Validate password
-        const isValidPassword = validatePassword(logInData.password);
-        if (!isValidPassword) {
-            setPasswordError(
-                'La contraseña debe tener al menos una mayúscula, un número y un carácter especial.'
-            );
-        } else {
-            setPasswordError(null);
-        }
+        // const isValidPassword = validatePassword(logInData.password);
+        // if (!isValidPassword) {
+        //     setPasswordError(
+        //         'La contraseña debe tener al menos una mayúscula, un número y un carácter especial.'
+        //     );
+        // } else {
+        //     setPasswordError(null);
+        // }
 
         // Validate email
         const isValidEmail = validateEmail(logInData.email);
@@ -38,16 +46,44 @@ const LogInForm = () => {
             setEmailError('El email no tiene un formato válido.');
         } else {
             setEmailError(null);
-            console.log(logInData);
         }
+
+        requestLogin();
     };
 
+    const requestLogin = async () => {
+        // try{
+        //     const resp = await fetch('http://localhost:5000/api/auth/login', {
+        //         method: 'POST',
+        //         headers: {
+        //             'Content-Type': 'application/json'
+        //         },
+        //         body: JSON.stringify(logInData)
+        //     });
+        // }catch(error) {
+        //     if(error instanceof Error) {
+        //         return NextResponse.json({
+        //             message: error.message
+        //         });
+        //     }
+        // }
+        const res = await signIn('credentials', {
+            email: logInData.email,
+            password: logInData.password,
+            redirect: false
+        });
+
+        if(res?.error) return setLoginError(res.error as string);
+
+        if(res?.ok) return router.push('/event')
+    }
+
     // Function to validate password
-    const validatePassword = (password: string) => {
-        const passwordRegex =
-      /^(?=.*[A-Z])(?=.*\d)(?=.*[@$!%*?&])[A-Za-z\d@$!%*?&]+$/;
-        return passwordRegex.test(password);
-    };
+    // const validatePassword = (password: string) => {
+    //     const passwordRegex =
+    //   /^(?=.*[A-Z])(?=.*\d)(?=.*[@$!%*?&])[A-Za-z\d@$!%*?&]+$/;
+    //     return passwordRegex.test(password);
+    // };
 
     // Function to validate email
     const validateEmail = (email: string) => {
@@ -84,7 +120,7 @@ const LogInForm = () => {
                         onChange={handleInputChange}
                         isPassword={true}
                     />
-                    {passwordError && <p className={styles.error}>{passwordError}</p>}
+                    {/* {passwordError && <p className={styles.error}>{passwordError}</p>} */}
                     <h3 className={styles.forgotPasswordLink}>
             ¿Has olvidado tu contraseña?
                     </h3>

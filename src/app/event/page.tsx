@@ -1,7 +1,14 @@
+'use client';
+
 import EventForm from '@/components/Form/EventForm';
 import styles from './event.module.css';
+import { useSession } from 'next-auth/react';
 
 const page = () => {
+
+    const { data: session, status } = useSession();
+
+    console.log(session, status);
 
     return (
         <>
