@@ -1,6 +1,7 @@
 import { NextResponse, NextRequest } from "next/server";
 import dbConnect from "@/lib/mongodb";
 import User from "@/models/users";
+import { encryptPassword } from "@/lib/crypt";
 
 export async function POST(req: NextRequest) {
     const { name, email, surname, password } = await req.json();
@@ -14,29 +15,45 @@ export async function POST(req: NextRequest) {
         }); 
     }
 
-    await dbConnect();
+    try{
+        await dbConnect();
 
-    const user = await User.findOne({ email: email });
-    if(user) {
-        return NextResponse.json({
-            message: 'El usuario ya existe'
-        }, 
-        {
-            status: 400
-        });
-    } else {
-        const newUser = await User.create({
-            name,
-            email,
-            surname,
-            password
-        });
-        if(newUser) {
+        const user = await User.findOne({ email: email });
+        if(user) {
             return NextResponse.json({
-                message: 'Se ha registrado al usuario con éxito'
+                message: 'Credenciales erroneas.'
+            }, 
+            {
+                status: 400
+            });
+        } else {
+            const newUser = await User.create({
+                name,
+                email,
+                surname,
+                password: await encryptPassword(password)
+            });
+            if(newUser) {
+                return NextResponse.json({
+                    message: 'Se ha registrado al usuario con éxito.'
+                });
+            } else {
+                return NextResponse.json({
+                    message: 'Ha ocurrido un error al registrar el usuario.'
+                },
+                {
+                    status: 500
+                });
+            }
+        }
+    }catch(error) {
+        if(error instanceof Error) {
+            return NextResponse.json({
+                message: error.message
+            },
+            {
+                status: 400
             });
         }
     }
-
-    return NextResponse.json({ message: 'response signup ', name, email, surname, password });
 }

@@ -1,4 +1,11 @@
 import mongoose, { Schema } from 'mongoose';
+import { Roboto_Flex } from 'next/font/google';
+
+export enum userRole {
+    USER = 'user',
+    ADMIN = 'admin',
+    SUPER = 'super'
+}
 
 const userSchema = new Schema({
     name: {
@@ -18,6 +25,11 @@ const userSchema = new Schema({
         type: String,
         required: [ true, 'El password es requerido' ],
         select: false
+    },
+    role: {
+        type: String,
+        required: true,
+        default: userRole.USER
     }
 });
 

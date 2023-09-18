@@ -47,8 +47,15 @@
       "error",
       "smart-tabs"
     ],
-    "array-bracket-newline": ["error", "consistent"],
-    "camelcase": ["error", { "properties": "never" }],
+    "array-bracket-newline": [
+      "error", "consistent"
+    ],
+    "camelcase": [
+      "error", 
+      { 
+        "properties": "never" 
+      }
+    ],
     "prefer-arrow-callback": "error"
   }
 }
