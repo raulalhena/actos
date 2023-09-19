@@ -18,7 +18,6 @@ import RadioGroupContainer from '../ButtonContainer/RadioGroupContainer';
 import { ButtonCardRadioProps } from '@/app/interfaces/buttonCardRadioProps';
 import modeRadioButtonsContainer from '@/data/modeRadioButtons.json';
 import timeZone from '@/data/timeZone.json';
-
 import 'react-date-picker/dist/DatePicker.css';
 import 'react-calendar/dist/Calendar.css';
 import DateInput from '../DateInput/DateInput';
@@ -26,7 +25,7 @@ import DateInput from '../DateInput/DateInput';
 // Form
 const EventForm = () => {
     const [ formData, setFormData ] = useState<EventFormProps>({
-        event: '',
+        name: '',
         category: '', // Completar con un valor por defecto
         tags: [],
         mode: '',
