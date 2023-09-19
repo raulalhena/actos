@@ -22,6 +22,17 @@ import 'react-date-picker/dist/DatePicker.css';
 import 'react-calendar/dist/Calendar.css';
 import DateInput from '../DateInput/DateInput';
 import axios from 'axios';
+import ProgressTracker from '../ProgressTracker/ProgressTracker';
+
+type RequiredFieldsBySection = {
+    [key: string]: string[];
+  };
+
+const requiredFieldsBySection: RequiredFieldsBySection = {
+    section1: [ 'name' ],
+    section2: [ 'description' ],
+    section3: [ 'capacity' ],
+};
 
 // Form
 const EventForm = () => {
@@ -62,6 +73,15 @@ const EventForm = () => {
     const [ isSection1Visible, setIsSection1Visible ] = useState(false);
     const [ isSection2Visible, setIsSection2Visible ] = useState(false);
     const [ isSection3Visible, setIsSection3Visible ] = useState(false);
+
+    const isSectionComplete = (sectionName: string): boolean => {
+        const requiredFields = requiredFieldsBySection[sectionName];
+        return requiredFields.every((field) => formData[field]);
+    };
+
+    const isSection1Complete = isSectionComplete('section1');
+    const isSection2Complete = isSectionComplete('section2');
+    const isSection3Complete = isSectionComplete('section3');
 
     // Input
     const handleInputChange = (event: React.ChangeEvent<HTMLInputElement>) => {
@@ -327,6 +347,12 @@ const EventForm = () => {
                 <div className={styles.buttonSection}>
                     <ButtonSubmit label="Guardar"/>
                 </div>
+
+                <ProgressTracker
+                    isSection1Visible={isSection1Visible}
+                    isSection2Visible={isSection2Visible}
+                    isSection3Visible={isSection3Visible}
+                />
             </form>
         </div>
     );
