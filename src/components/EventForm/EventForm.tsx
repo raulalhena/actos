@@ -22,6 +22,8 @@ import timeZone from '@/data/timeZone.json';
 import 'react-date-picker/dist/DatePicker.css';
 import 'react-calendar/dist/Calendar.css';
 import DateInput from '../DateInput/DateInput';
+import axios from 'axios';
+import ProgressTracker from '../ProgressTracker/ProgressTracker';
 
 // Form
 const EventForm = () => {
@@ -350,6 +352,12 @@ const EventForm = () => {
                 <div className={styles.buttonSection}>
                     <ButtonSubmit label="Guardar"/>
                 </div>
+
+                <ProgressTracker
+                    isSection1Visible={isSection1Visible}
+                    isSection2Visible={isSection2Visible}
+                    isSection3Visible={isSection3Visible}
+                />
             </form>
         </div>
     );
