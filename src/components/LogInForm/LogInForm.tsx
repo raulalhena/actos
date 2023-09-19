@@ -60,8 +60,8 @@ const LogInForm = () => {
 
         if(res?.error) return setLoginError(res.error as string);
 
-        if(res?.ok) return router.push('/event')
-    }
+        if(res?.ok) return router.push('/event');
+    };
 
     // Function to validate password
     const validatePassword = (password: string) => {

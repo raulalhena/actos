@@ -16,7 +16,7 @@ import SectionForm from '../SectionForm/SectionForm';
 import { ImageUploader } from '../ImageUploader/ImageUploader';
 import RadioGroupContainer from '../ButtonContainer/RadioGroupContainer';
 import { ButtonCardRadioProps } from '@/app/interfaces/buttonCardRadioProps';
-import radioButtonsContainer from '@/data/radioButtons.json';
+import modeRadioButtonsContainer from '@/data/modeRadioButtons.json';
 import timeZone from '@/data/timeZone.json';
 
 import 'react-date-picker/dist/DatePicker.css';
@@ -26,7 +26,7 @@ import axios from 'axios';
 
 // Form
 const EventForm = () => {
-    const [formData, setFormData] = useState<EventFormProps>({
+    const [ formData, setFormData ] = useState<EventFormProps>({
         event: '',
         category: '', // Completar con un valor por defecto
         tags: [],
@@ -60,9 +60,9 @@ const EventForm = () => {
     });
 
     // Visibility
-    const [isSection1Visible, setIsSection1Visible] = useState(false);
-    const [isSection2Visible, setIsSection2Visible] = useState(false);
-    const [isSection3Visible, setIsSection3Visible] = useState(false);
+    const [ isSection1Visible, setIsSection1Visible ] = useState(false);
+    const [ isSection2Visible, setIsSection2Visible ] = useState(false);
+    const [ isSection3Visible, setIsSection3Visible ] = useState(false);
 
     // Input
     const handleInputChange = (event: React.ChangeEvent<HTMLInputElement>) => {
@@ -101,11 +101,11 @@ const EventForm = () => {
     // Submit Button
     const handleSubmit = (event: React.FormEvent) => {
         event.preventDefault();
-        axios.post('localhost:5000/api/events', formData)
+        axios.post('localhost:5000/api/events', formData);
     };
 
     // Button Radio
-    const [selectedValue, setSelectedValue] = useState<string>('');
+    const [ selectedValue, setSelectedValue ] = useState<string>('');
 
     const handleRadioChange = (value: string) => {
         setSelectedValue(value);
@@ -116,7 +116,7 @@ const EventForm = () => {
     };
 
     // Radio Group
-    const radioButtons: ButtonCardRadioProps[] = radioButtonsContainer.map((container) => ({
+    const radioButtons: ButtonCardRadioProps[] = modeRadioButtonsContainer.map((container) => ({
         ...container,
         checked: selectedValue === container.value,
         onChange: () => handleRadioChange(container.value),
@@ -133,12 +133,12 @@ const EventForm = () => {
 
                     <FormField>
                         <TextInput
-                            id="event"
+                            id="name" 
                             label="Nombre del evento*"
                             placeholder="Evento"
                             minLength={3}
                             maxLength={75}
-                            value={formData.event}
+                            value={formData.name}
                             onChange={handleInputChange}
                         />
                     </FormField>
@@ -303,23 +303,30 @@ const EventForm = () => {
                     isVisible={isSection3Visible}
                     toggleVisibility={() => setIsSection3Visible(!isSection3Visible)}>
                     <FormField>
-                        <p> !! Colocar componente si Hay límite de entradas</p>
-                        <TextInputWithSubtitle
-                            id="capacity"
+                        <RadioGroupContainer
+                            radioButtons={radioButtons}
+                            selectedValue={selectedValue}
                             label="Límite de entradas"
-                            subtitle="Escribe el número de entradas disponibles en caso de aforo limitado."
-                            placeholder=""
-                            minLength={0}
-                            maxLength={500}
-                            value={formData.capacity.toString()} // Debe ser una cadena
-                            onChange={handleInputChange}
+                            onChange={handleRadioChange}
                         />
+                        {selectedValue === 'option1' && (
+                            <TextInputWithSubtitle
+                                id="capacity"
+                                label="Límite de entradas"
+                                subtitle="Escribe el número de entradas disponibles en caso de aforo limitado."
+                                placeholder=""
+                                minLength={0}
+                                maxLength={500}
+                                value={formData.capacity.toString()} 
+                                onChange={handleInputChange}
+                            />
+                        )}
                     </FormField>
                 </SectionForm>
                 <p style={{ color: 'red' }}>* Rellena todos los campos obligatorios para poder publicar tu evento.</p>
 
                 <div className={styles.buttonSection}>
-                    <ButtonSubmit label="Guardar" />
+                    <ButtonSubmit label="Guardar"/>
                 </div>
             </form>
         </div>

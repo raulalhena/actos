@@ -1,5 +1,4 @@
 import mongoose, { Schema } from 'mongoose';
-import { Roboto_Flex } from 'next/font/google';
 
 export enum userRole {
     USER = 'user',
