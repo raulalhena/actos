@@ -17,6 +17,7 @@ import { ImageUploader } from '../ImageUploader/ImageUploader';
 import RadioGroupContainer from '../ButtonContainer/RadioGroupContainer';
 import { ButtonCardRadioProps } from '@/app/interfaces/buttonCardRadioProps';
 import modeRadioButtonsContainer from '@/data/modeRadioButtons.json';
+import capacityRadioButtonsContainer from '@/data/capacityRadioButtons.json';
 import timeZone from '@/data/timeZone.json';
 import 'react-date-picker/dist/DatePicker.css';
 import 'react-calendar/dist/Calendar.css';
@@ -64,7 +65,9 @@ const EventForm = () => {
 
     // Input
     const handleInputChange = (event: React.ChangeEvent<HTMLInputElement>) => {
-        const { id, value } = event.target;
+        const id = event.target.id;
+        let value : string | number = event.target.value;
+        id === 'capacity' ? value = +value : ' ';
         setFormData({
             ...formData,
             [id]: value,
@@ -99,7 +102,7 @@ const EventForm = () => {
     // Submit Button
     const handleSubmit = (event: React.FormEvent) => {
         event.preventDefault();
-        console.log('submit');
+        console.log(formData);
         fetch('http://localhost:5000/api/events', { 
             method: 'POST',
             headers: {
@@ -111,21 +114,34 @@ const EventForm = () => {
     };
 
     // Button Radio
-    const [ selectedValue, setSelectedValue ] = useState<string>('');
+    const [ selectedMode, setSelectedMode ] = useState<string>('');
+    const [ selectedCapacity, setSelectedCapacity ] = useState<boolean>(false);
 
-    const handleRadioChange = (value: string) => {
-        setSelectedValue(value);
+    const handleModeChange = (value: string) => {
+        console.log(value);
+        setSelectedMode(value);
         setFormData({
             ...formData,
-            type: value,
+            mode: value,
         });
     };
 
-    // Radio Group
-    const radioButtons: ButtonCardRadioProps[] = modeRadioButtonsContainer.map((container) => ({
+    const handleCapacityChange = (value: string) => {
+        setSelectedCapacity(!selectedCapacity);
+    };
+
+    // Mode Radio Group
+    const modeRadioButtons: ButtonCardRadioProps[] = modeRadioButtonsContainer.map((container) => ({
         ...container,
-        checked: selectedValue === container.value,
-        onChange: () => handleRadioChange(container.value),
+        checked: selectedMode === container.value,
+        onChange: () => handleModeChange(container.value),
+    }));
+
+    // Capacity Radio Group
+    const capacityRadioButtons: ButtonCardRadioProps[] = capacityRadioButtonsContainer.map((container) => ({
+        ...container,
+        checked: selectedMode === container.value,
+        onChange: () => handleCapacityChange(container.value),
     }));
 
     return (
@@ -170,12 +186,12 @@ const EventForm = () => {
 
                     <FormField>
                         <RadioGroupContainer
-                            radioButtons={radioButtons}
-                            selectedValue={selectedValue}
+                            radioButtons={modeRadioButtons}
+                            selectedValue={selectedMode}
                             label="Modalidad"
-                            onChange={handleRadioChange}
+                            onChange={handleModeChange}
                         />
-                        {selectedValue === 'option1' && (
+                        {selectedMode === 'option1' && (
                             <TextInput
                                 id="address"
                                 label="Añade una dirección"
@@ -186,7 +202,7 @@ const EventForm = () => {
                                 onChange={handleInputChange}
                             />
                         )}
-                        {selectedValue === 'option2' && (
+                        {selectedMode === 'option2' && (
                             <TextInput
                                 id="onlineLink"
                                 label="Añade un link de acceso"
@@ -197,7 +213,7 @@ const EventForm = () => {
                                 onChange={handleInputChange}
                             />
                         )}
-                        {selectedValue === 'option3' && (
+                        {selectedMode === 'option3' && (
                             <>
                                 <TextInput
                                     id="address"
@@ -310,12 +326,12 @@ const EventForm = () => {
                     toggleVisibility={() => setIsSection3Visible(!isSection3Visible)}>
                     <FormField>
                         <RadioGroupContainer
-                            radioButtons={radioButtons}
+                            radioButtons={capacityRadioButtons}
                             selectedValue={selectedValue}
                             label="Límite de entradas"
-                            onChange={handleRadioChange}
+                            onChange={handleCapacityChange}
                         />
-                        {selectedValue === 'option1' && (
+                        {selectedCapacity && (
                             <TextInputWithSubtitle
                                 id="capacity"
                                 label="Límite de entradas"
@@ -323,7 +339,7 @@ const EventForm = () => {
                                 placeholder=""
                                 minLength={0}
                                 maxLength={500}
-                                value={formData.capacity.toString()} 
+                                value={formData.capacity} 
                                 onChange={handleInputChange}
                             />
                         )}
