@@ -2,13 +2,22 @@ import './globals.css';
 import type { Metadata } from 'next';
 import { Inter } from 'next/font/google';
 import Providers from './Providers';
+import { Author } from 'next/dist/lib/metadata/types/metadata-types';
 
 const inter = Inter({ subsets: [ 'latin' ] });
+
+const authors: Array<Author> = [ 
+    { name: 'Teresa Madridejos' }, 
+    { name: 'Yumi Namie' }, 
+    { name: 'Diego Cruz' }, 
+    { name: 'Andreu Baltazar' }, 
+    { name: 'Raul Alhena' } 
+];
 
 export const metadata: Metadata = {
     title: 'ACTOS',
     description: 'Crea y gestiona tus eventos de forma molona! yeahh!',
-    authors: [ 'Teresa Madridejos', 'Yumi Namie', 'Diego Cruz', 'Andreu Baltazar', 'Raul Alhena' ]
+    authors
 };
 
 export default function RootLayout({

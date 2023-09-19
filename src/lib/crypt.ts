@@ -1,6 +1,6 @@
 import bcrypt from 'bcrypt';
 
-export async function encryptPassword(password: String) {
+export async function encryptPassword(password: string) {
     const saltRounds = 10;
     try {
         const salt = await bcrypt.genSalt(saltRounds);
@@ -13,7 +13,7 @@ export async function encryptPassword(password: String) {
     }
 }
 
-export async function validatePassword(password: String, hash: String) {
+export async function validatePassword(password: string, hash: string) {
     try{
         return bcrypt.compare(password, hash);
     }catch (error) {

@@ -100,7 +100,15 @@ const EventForm = () => {
     // Submit Button
     const handleSubmit = (event: React.FormEvent) => {
         event.preventDefault();
-        console.log(formData);
+        console.log('submit');
+        fetch('http://localhost:5000/api/events', { 
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json'
+            },
+            body: JSON.stringify(formData)
+        });
+        // redirección a "detalle del evento"
     };
 
     // Button Radio
@@ -132,12 +140,12 @@ const EventForm = () => {
 
                     <FormField>
                         <TextInput
-                            id="event"
+                            id="name" 
                             label="Nombre del evento*"
                             placeholder="Evento"
                             minLength={3}
                             maxLength={75}
-                            value={formData.event}
+                            value={formData.name}
                             onChange={handleInputChange}
                         />
                     </FormField>
@@ -325,7 +333,7 @@ const EventForm = () => {
                 <p style={{ color: 'red' }}>* Rellena todos los campos obligatorios para poder publicar tu evento.</p>
 
                 <div className={styles.buttonSection}>
-                    <ButtonSubmit label="Guardar" />
+                    <ButtonSubmit label="Guardar"/>
                 </div>
             </form>
         </div>
