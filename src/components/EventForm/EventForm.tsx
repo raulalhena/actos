@@ -329,7 +329,7 @@ const EventForm = () => {
                     <FormField>
                         <RadioGroupContainer
                             radioButtons={capacityRadioButtons}
-                            selectedValue={selectedValue}
+                            selectedValue={selectedMode}
                             label="Límite de entradas"
                             onChange={handleCapacityChange}
                         />
